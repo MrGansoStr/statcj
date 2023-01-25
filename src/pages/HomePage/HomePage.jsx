@@ -6,8 +6,10 @@ function HomePage() {
   return (
     <>
       HOME PAGE
+      <RedirectBox _height={"100px"} _title={"Titulo"} _info={"Informacion sobre la redirección "} />
+      <RedirectBox _height={"200px"} _title={"Titulo"} _info={"Informacion sobre la redirección "} />
+      <RedirectBox _height={"300px"} _title={"Titulo"} _info={"Informacion sobre la redirección "} />
       <Footer/>
-      <RedirectBox _height={"100px"}/>
     </>
   );
 }
