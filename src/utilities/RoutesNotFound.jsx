@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import NotFoundPage from "../components/NotFoundPage/NotFoundPage";
+import NotFoundPage from './../StyledComponents/NotFoundPage/NotFoundPage';
 
 
 function RoutesNotFound({children}) {
