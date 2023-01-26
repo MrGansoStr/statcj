@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import reactLogo from './assets/react.svg'
-import './App.css'
-import HomePage from './pages/HomePage/HomePage'
-import RoutesNotFound from './utilities/RoutesNotFound'
-import FrecuencyTables from './pages/FrecuencyTables/FrecuencyTables'
+import { useState } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import reactLogo from './assets/react.svg';
+import HomePage from './pages/HomePage/HomePage';
+import RoutesNotFound from './utilities/RoutesNotFound';
+import FrecuencyTables from './pages/FrecuencyTables/FrecuencyTables';
+import Header from './StyledComponents/Header/Header';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,8 +12,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Header/>
         <RoutesNotFound>
-          <Route path='/' element={<>Pagina principal statCJ</>} />
+          <Route index element={<>Pagina principal statCJ</>} />
           <Route path='/home' element={<HomePage />} />
           <Route path='/tables' element={<FrecuencyTables />} />
         </RoutesNotFound>

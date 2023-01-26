@@ -10,7 +10,6 @@ function RedirectBox({ _height, _title, _info }) {
         <Typography variant="h3">{_title}</Typography>
         <Typography varian="body1">{_info}</Typography>
       </Box>
-
     </Box>
   );
 }
