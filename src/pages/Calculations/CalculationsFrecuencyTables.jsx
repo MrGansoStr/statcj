@@ -25,7 +25,8 @@ export const ProcessData = (_inputData, _grouped = false) => {
     return console.log("Size 0");
   }
   if(_grouped) {
-    RawDataGrouped = _inputData.split(' ').map(Number) == [NaN] ? _inputData.split(' ').map(Number) : _inputData.split(',').map(Number);
+    RawDataGrouped = _inputData.split(' ').map(Number);
+    //== [NaN] ? (_inputData.split(',').map(Number) == [NaN] ? _inputData.split("\n").map(Number) : _inputData.split(';').map(Number)) : _inputData.split(' ').map(Number);
     max =  Math.max(...RawDataGrouped);
     min = Math.min(...RawDataGrouped);
     range = max - min;
@@ -61,7 +62,7 @@ export const ProcessData = (_inputData, _grouped = false) => {
     return DataGrouped;
   }
   else {
-    RawDataGrouped = _inputData.split(' ').map(Number) == [NaN] ? _inputData.split(' ').map(Number) : _inputData.split(',').map(Number);
+    RawDataGrouped = _inputData.split(' ').map(Number);
     let DataGrouped = [];
     let temp = new Set(RawDataGrouped);
     let DataWithouthRep = [...temp];

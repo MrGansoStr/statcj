@@ -41,7 +41,7 @@ function FrecuencyTables() {
     <Box component="div" className="container-xl py-4" >
       <Typography variant="h4">Tabla de Frecuencias</Typography>
       <Stack component="div" spacing={2} className="d-flex align-items-center justify-content-center m-0 m-auto py-5 w-75">
-        <Typography component="div" variant="overline" className="fs-6">Ingrese sus Datos separados por una coma {'(,)'} o por un espacio {'(" ")'} por dato:</Typography>
+        <Typography component="div" variant="overline" className="fs-6">Ingrese sus Datos separados por un espacio {'(" ")'} por dato:</Typography>
         <TextField
           type="text"
           id="standard-multiline-flexible"
