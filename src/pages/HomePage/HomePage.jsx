@@ -9,6 +9,7 @@ function HomePage() {
   return (
     <Box component="div" className="container-xl py-3">
       <RedirectBox _height={"25rem"} _route={PublicRoutes.FRECUENCY_TABLES} _title={TablesFrecuencyDescription.title} _types={TablesFrecuencyDescription.types} _info={TablesFrecuencyDescription.description} />
+      <RedirectBox _height={"25rem"} _title={"Percentiles"} _info={"Informacion sobre la redirección "} />
       <RedirectBox _height={"25rem"} _title={"Medidas de Tendencia Central"} _info={"Informacion sobre la redirección "} />
       <RedirectBox _height={"25rem"} _title={"Varianzas y Desviaciones Estándar"}  _types={"Para datos agrupados y no agrupados"} _info={"Informacion sobre la redirección "} />
       <RedirectBox _height={"25rem"} _title={"Valor en Tabla "} _info={"Informacion sobre la redirección "} />

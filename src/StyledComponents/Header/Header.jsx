@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography} from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
@@ -6,13 +6,13 @@ import '../CSS/Styled.css'
 import { useEffect, useRef } from "react";
 
 function Header() {
-
+  
   const StyleHeader = {
     borderBottom: "black solid 2px "
   }
   return (
     <>
-      <Box component="header" className="container-xxl position-sticky" style={{ top: "0", backgroundColor: "#a7a6a6" }}>
+      <Box component="header" className="container-xxl static-view-header">
         <Box component="nav" className="navbar navbar-expand-lg py-0" style={StyleHeader}>
           <Box component="div" className="container-fluid" style={{ borderBottom: "0" }}>
             <Link className="navbar-brand w-25 text-center " to="/">
