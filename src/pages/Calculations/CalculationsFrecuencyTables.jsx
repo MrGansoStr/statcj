@@ -30,12 +30,24 @@ export const ProcessData = (_inputData, _grouped = false) => {
     max =  Math.max(...RawDataGrouped);
     min = Math.min(...RawDataGrouped);
     range = max - min;
-    interval = parseInt(Math.sqrt(RawDataGrouped.length)); // K
+    if(RawDataGrouped.length > 25){
+      interval = parseInt(Math.sqrt(RawDataGrouped.length)); // K
+    }
+    else {
+      let tempInterval = 1 + (3.322 * Math.log10(RawDataGrouped.length));
+      interval = parseInt(tempInterval); // k Sturges
+      if(interval % 2 == 0){
+        interval = interval + 1;
+      }
+    }
     amplitude = parseInt(range / interval)+1; // A
     let newRange = interval * amplitude;
     let CorreccionDeIntevalo = parseInt((newRange - range)/2);
     min = min-CorreccionDeIntevalo;
     max = max+CorreccionDeIntevalo;
+    if(min < 0.00000) {
+      min = 0;
+    }
     let acumuladorAbsoluta = 0;
     let acumuladorRelativa = 0;
     for(let i = 0; i < interval; i++) {

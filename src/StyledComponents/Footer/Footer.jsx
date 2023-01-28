@@ -22,12 +22,15 @@ function Footer() {
           <Typography paragraph variant="h6" className="border d-flex align-items-center justify-content-center">
             Algo1
           </Typography>
-          <FacebookOutlinedIcon color="primary"/>
-          <TwitterIcon color="primary"/>
-          <InstagramIcon/>
+          <FacebookOutlinedIcon color="primary" />
+          <TwitterIcon color="primary" />
+          <InstagramIcon />
         </Grid>
         <Grid item xs={4} className="border p-2 d-flex justify-content-center align-items-center">Algo2</Grid>
       </Grid>
+      <Box component="div" className="d-flex align-items-center justify-content-center py-3 bg-light">
+        ©StatCJ 2023 | Todos los Derechos reservados 
+      </Box>
     </Box>
   );
 }
