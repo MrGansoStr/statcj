@@ -1,6 +1,16 @@
+import { Box, Typography } from "@mui/material";
+import Calculator from "./Components/Calculator";
+import DescriptionTopic from "./Components/DescriptionTopic";
+
+
 function FrecuencyTables() {
+  
   return (
-    <div>FrecuencyTables</div>
-  )
+    <Box component="div" className="container-xl py-4" >
+      <Typography variant="h4">Tabla de Frecuencias</Typography>
+      <Calculator/>
+      <DescriptionTopic/>
+    </Box>
+  );
 }
-export default FrecuencyTables;
+export default FrecuencyTables; 

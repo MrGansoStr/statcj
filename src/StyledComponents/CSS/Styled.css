@@ -1,0 +1,40 @@
+.without-shadow {
+  box-shadow: 0 0 0 0 !important;
+}
+
+/* REDIRECT BOX */
+
+.update-view-link:hover {
+  color: #5c6bc0;
+  font-size: 2.36rem;
+  transition: linear 0.15s;
+}
+
+/* HEADER */
+
+.update-view-link-header:hover{
+  color: white !important;
+  font-size: 1.7rem !important;
+  transition: all linear 0.2s;
+  font-weight: bold !important;
+}
+
+.static-view-header {
+  position: sticky;
+  position: -webkit-sticky;
+  z-index: 5;
+  background-color: #a7a6a6;
+  top: 0;
+}
+
+/* FOOTER */
+
+.colors-footer {
+  background-color: #b4b1b1;
+}
+
+.update-view-link-footer:hover {
+  color: white !important;
+  font-size: 1.2rem !important;
+  transition: all linear 0.2s;
+}
