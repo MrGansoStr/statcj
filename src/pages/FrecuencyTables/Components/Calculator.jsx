@@ -9,6 +9,7 @@ import { Alert, AlertTitle, Box, Button, Collapse, FormControlLabel, IconButton,
 import CloseIcon from '@mui/icons-material/Close';
 import { useEffect, useState } from 'react';
 import { calculateTotals, ProcessData } from '../../Calculations/CalculationsFrecuencyTables';
+import { ProcessInput } from './../../../utilities/ProcessInput';
 
 
 function Calculator() {
@@ -30,7 +31,7 @@ function Calculator() {
       setShowError(true);
     }
     else {
-      await setprocessedData(ProcessData(RawData, grouped));
+      setprocessedData(ProcessData(ProcessInput(RawData), grouped));
     }
   }
 

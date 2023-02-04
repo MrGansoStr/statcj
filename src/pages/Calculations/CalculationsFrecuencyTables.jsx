@@ -25,8 +25,7 @@ export const ProcessData = (_inputData, _grouped = false) => {
     return console.log("Size 0");
   }
   if(_grouped) {
-    RawDataGrouped = _inputData.split(' ').map(Number);
-    //== [NaN] ? (_inputData.split(',').map(Number) == [NaN] ? _inputData.split("\n").map(Number) : _inputData.split(';').map(Number)) : _inputData.split(' ').map(Number);
+    RawDataGrouped = _inputData;
     max =  Math.max(...RawDataGrouped);
     min = Math.min(...RawDataGrouped);
     range = max - min;
@@ -74,13 +73,14 @@ export const ProcessData = (_inputData, _grouped = false) => {
     return DataGrouped;
   }
   else {
-    RawDataGrouped = _inputData.split(' ').map(Number);
+    RawDataGrouped = _inputData;
     let DataGrouped = [];
     let temp = new Set(RawDataGrouped);
     let DataWithouthRep = [...temp];
     DataWithouthRep.sort(compareNumbers);
     let acumuladorAbsoluta = 0;
     let acumuladorRelativa = 0;
+
     for(let i = 0; i < DataWithouthRep.length; i++){
       let _veces = RawDataGrouped.filter(element => (element == DataWithouthRep[i])).length;
       let _relativa = (_veces/RawDataGrouped.length);
@@ -103,6 +103,7 @@ export const ProcessData = (_inputData, _grouped = false) => {
       DataGrouped.push(obj)
       obj = {}
     }
+
     return DataGrouped;
   }
 }
@@ -111,10 +112,12 @@ export const calculateTotals = (_inputData) => {
   let sumaAbsoluta = 0;
   let sumaRelativa = 0.0;
   let sumaPorcentualRelativa = 0.0;
+
   for(let i = 0; i < _inputData.length; i++){
     sumaAbsoluta += _inputData[i].veces;
     sumaRelativa += parseFloat(_inputData[i].frelativa);
     sumaPorcentualRelativa += parseFloat(_inputData[i].porcentual);
   }
+
   return {sumaAbsoluta: sumaAbsoluta, sumaRelativa: redondeo(sumaRelativa, 4), porcentualRelativa: redondeo(sumaPorcentualRelativa, 4)};
 }

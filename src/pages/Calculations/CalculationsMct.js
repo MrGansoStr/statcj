@@ -1,4 +1,17 @@
-import { redondeo } from "./CalculationsFrecuencyTables";
+import { ProcessData, redondeo } from "./CalculationsFrecuencyTables";
+
+export const CalculateMediaGrouped = (Data) => {
+  // Data -> Array with objects
+  let newData = ProcessData(Data, true);
+  let suma = 0; //Sumatoria (x * f)
+  let sumaTimes = 0; //n
+  newData.forEach(element => {
+    suma += (element.marcaDeClase * element.veces);
+    sumaTimes += element.veces;
+  })
+  let MediaAgrupada = suma / sumaTimes;
+  return redondeo(MediaAgrupada, 4);
+}
 
 export const CalculateMedia = (Data) => {
   let sum = 0;

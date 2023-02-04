@@ -2,18 +2,29 @@
 import { Stack, TextField, Typography, Button, Box } from '@mui/material';
 import { useState } from 'react';
 import { CalculateVarianceAndError } from '../../Calculations/CalculationsVarianceAndError';
+import HowCalculate from '../../UtilitiesComponents/HowCalculate';
 import { ProcessInput } from './../../../utilities/ProcessInput';
 function Variance_Calculator() {
 
   const [rawData, setRawData] = useState("");
   const [calculatedData, setcalculatedData] = useState(null);
+  const [grouped, setGrouped] = useState(false);
+  const [muestral, setMuestral] = useState(false);
 
   const handleChangeRawData = (e) => {
     setRawData(e.target.value);
   }
 
+  const handleChangeGrouped = (e) => {
+    setGrouped(e.target.checked);
+  }
+
+  const handleChangeMuestral = (e) => {
+    setMuestral(e.target.checked);
+  }
+
   const calculateVarianceAndError = () => {
-    setcalculatedData(CalculateVarianceAndError(ProcessInput(rawData)));
+    setcalculatedData(CalculateVarianceAndError(ProcessInput(rawData), grouped, muestral));
   }
   return (
     <Stack component="div" spacing={3} className="d-flex align-items-center justify-content-center">
@@ -32,16 +43,18 @@ function Variance_Calculator() {
       <Box component="span" className="">
         <Button color="success" variant="outlined" onClick={calculateVarianceAndError}>Calcular</Button>
       </Box>
-      <Box component="div" className="py-4">
-        <Typography component="p" variant="overline" className="fs-5">
-          Varianza: <b>
 
+      <HowCalculate grouped={grouped} handleChangeGrouped={handleChangeGrouped} muestral={muestral} handleChangeMuestral={handleChangeMuestral} />
+      
+      <Box component="div" className="py-4">
+        <Typography component="p" variant="overline" className="fs-6">
+          Varianza: <b>
             {
               calculatedData ? calculatedData.varianza : "No Calculado"
             }
           </b>
         </Typography>
-        <Typography component="p" variant="overline" className="fs-5">
+        <Typography component="p" variant="overline" className="fs-6">
           Error Estándar: <b>
             {
               calculatedData ? calculatedData.error : "No calculado"
