@@ -3,7 +3,7 @@ const compareNumbers = (a, b) => {
   return a - b;
 }
 
-const redondeo = (val, _cifras) =>{
+export const redondeo = (val, _cifras = 4) =>{
  let cifras = Math.pow(10, _cifras);
  return Math.round((val + Number.EPSILON) * cifras) / cifras; 
 }
