@@ -13,3 +13,27 @@ export const TablesFrecuencyDescription = {
     RelativeFrecuencyCumulative: 'Se llama frecuencia relativa acumulada de un valor xi de la variable X. al ciente entre su frecuencia absoluta acumulada y el número de observaciones realizadas (n), y se denota por:'
   }
 }
+
+export const MCTDescription = {
+  title: "Medidas de Tendencia Central",
+  types: "Para datos no agrupados",
+  abstract: 'Resume en un solo valor todo el conjunto de datos',
+  fullInfo: 'Informacion sobre las Medidas de Tendencia Central',
+  parts: {
+
+  }
+}
+
+export const VarianceDescription = {
+  title: "Varianza",
+  abstract: "Resumen muy pequeño de la varianza",
+  types: "Datos Agrupados y para datos no Agrupados",
+  fullInfo: 'Toda la información sobre la varianza; Usos..., entre otros'
+}
+
+export const ErrorEstandarDescription = {
+  title: 'Error Estándar',
+  abstract: 'Resumen muy pequeño del Error Estándar',
+  types: '',
+  fullInfo: 'Toda la información sobre el Error Estándar'
+}
