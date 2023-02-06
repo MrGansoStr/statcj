@@ -11,7 +11,7 @@ function HomePage() {
       <RedirectBox _height={"25rem"} _route={PublicRoutes.FRECUENCY_TABLES} _title={TablesFrecuencyDescription.title} _types={TablesFrecuencyDescription.types} _info={TablesFrecuencyDescription.abstract} />
       <RedirectBox _height={"25rem"} _route={PublicRoutes.MCT} _title={MCTDescription.title} _types={MCTDescription.types}  _info={MCTDescription.abstract} />
       <RedirectBox _height={"25rem"} _route={PublicRoutes.VARIANCE} _title={`${VarianceDescription.title} y ${ErrorEstandarDescription.title}`}  _types={VarianceDescription.types} _info={VarianceDescription.abstract} />
-      <RedirectBox _height={"25rem"} _title={"Percentiles"} _info={"Informacion sobre la redirección "} />
+      <RedirectBox _height={"25rem"} _route={PublicRoutes.PERCENTILES} _title={"Percentiles"} _info={"Informacion sobre la redirección "} />
       <RedirectBox _height={"25rem"} _title={"Valor en Tabla "} _info={"Informacion sobre la redirección "} />
       <RedirectBox _height={"25rem"} _title={"Buscar Símbolos"} _info={"Informacion sobre la redirección "} />
       <RedirectBox _height={"25rem"} _title={"Gráficos Estadísticos"} _info={"Informacion sobre la redirección "} />

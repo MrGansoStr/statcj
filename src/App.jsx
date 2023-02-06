@@ -5,6 +5,7 @@ import reactLogo from './assets/react.svg';
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const FrecuencyTables = lazy(() => import('./pages/FrecuencyTables/FrecuencyTables'));
 const Mct = lazy(() => import('./pages/MCT/Mct'));
+const Percentiles = lazy(() => import('./pages/Percentiles/Percentiles'));
 import RoutesNotFound from './utilities/RoutesNotFound';
 import Header from './StyledComponents/Header/Header';
 import Footer from './StyledComponents/Footer/Footer';
@@ -23,6 +24,7 @@ function App() {
             <Route path={PublicRoutes.FRECUENCY_TABLES} element={<FrecuencyTables />} />
             <Route path={PublicRoutes.MCT} element={<Mct />} />
             <Route path={PublicRoutes.VARIANCE} element={<VarianceAndError />} />
+            <Route path={PublicRoutes.PERCENTILES} element={<Percentiles/>} />
           </RoutesNotFound>
           <Footer />
         </BrowserRouter>

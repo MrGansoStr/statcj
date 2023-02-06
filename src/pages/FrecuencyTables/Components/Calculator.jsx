@@ -117,7 +117,7 @@ function Calculator() {
 
                 {grouped ? <TableCell align="right">{row.marcaDeClase}</TableCell> : null}
                 <TableCell align="right">{row.veces}</TableCell>
-                <TableCell align="right">{row.acumuladoAbosulta}</TableCell>
+                <TableCell align="right">{row.acumuladoAbsoluta}</TableCell>
                 <TableCell align="right">{row.frelativa}</TableCell>
                 <TableCell align="right">{row.acumuladoRelativa}</TableCell>
                 <TableCell align="right">{row.porcentual}%</TableCell>
