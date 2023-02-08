@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { MCTDescription } from "../../../Descriptions/FrecuencyTables/descriptions";
+import { MCTDescription } from "../../../Descriptions/DescriptionsAllTopics/descriptions";
 
 function MCT_description() {
   return (
