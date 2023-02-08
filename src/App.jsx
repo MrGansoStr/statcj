@@ -11,6 +11,7 @@ import Header from './StyledComponents/Header/Header';
 import Footer from './StyledComponents/Footer/Footer';
 import { PublicRoutes } from './models/routes';
 import VarianceAndError from './pages/VarianceAndError/VarianceAndError';
+const SearchSymbol = lazy(() => import('./pages/SearchSymbol/SearchSymbol'));
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
             <Route path={PublicRoutes.FRECUENCY_TABLES} element={<FrecuencyTables />} />
             <Route path={PublicRoutes.MCT} element={<Mct />} />
             <Route path={PublicRoutes.VARIANCE} element={<VarianceAndError />} />
-            <Route path={PublicRoutes.PERCENTILES} element={<Percentiles/>} />
+            <Route path={PublicRoutes.PERCENTILES} element={<Percentiles />} />
+            <Route path={PublicRoutes.SYMBOLS} element={<SearchSymbol />} />
           </RoutesNotFound>
           <Footer />
         </BrowserRouter>
@@ -33,4 +35,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

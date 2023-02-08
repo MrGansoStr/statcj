@@ -3,5 +3,6 @@ export const PublicRoutes = {
   FRECUENCY_TABLES: "tables",
   MCT: "mct",
   VARIANCE: "varianceanderror",
-  PERCENTILES: "percentile"
+  PERCENTILES: "percentile",
+  SYMBOLS: "symbols"
 }

@@ -41,7 +41,7 @@ function Calculator() {
   }, [processedData]);
   return (
     <>
-    <Stack component="div" spacing={2} className="d-flex align-items-center justify-content-center m-0 m-auto py-5 w-75">
+      <Stack component="div" spacing={2} className="d-flex align-items-center justify-content-center m-0 m-auto py-5 w-75">
         <Typography component="div" variant="overline" className="fs-6">Ingrese sus Datos separados por un espacio {'(" ")'} por dato:</Typography>
         <Typography component="div" variant="overline" className="fs-6">Ejemplo:10 2 4 5 1 2 5 1 9 2 1</Typography>
         <TextField

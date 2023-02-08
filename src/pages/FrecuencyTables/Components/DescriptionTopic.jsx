@@ -1,5 +1,5 @@
 import { Box, Paper, Typography } from "@mui/material";
-import { TablesFrecuencyDescription } from "../../../Descriptions/FrecuencyTables/descriptions";
+import { TablesFrecuencyDescription } from "../../../Descriptions/DescriptionsAllTopics/descriptions";
 import { MathComponent, useMathJax } from "mathjax-react";
 
 function DescriptionTopic() {

@@ -1,5 +1,5 @@
 import { Box, TextField } from '@mui/material';
-import { ErrorEstandarDescription, MCTDescription, TablesFrecuencyDescription, VarianceDescription } from '../../Descriptions/FrecuencyTables/descriptions';
+import { ErrorEstandarDescription, MCTDescription, TablesFrecuencyDescription, VarianceDescription } from '../../Descriptions/DescriptionsAllTopics/descriptions';
 import RedirectBox from '../../StyledComponents/RedirectBox/RedirectBox';
 import { PublicRoutes } from './../../models/routes';
 
@@ -12,8 +12,8 @@ function HomePage() {
       <RedirectBox _height={"25rem"} _route={PublicRoutes.MCT} _title={MCTDescription.title} _types={MCTDescription.types}  _info={MCTDescription.abstract} />
       <RedirectBox _height={"25rem"} _route={PublicRoutes.VARIANCE} _title={`${VarianceDescription.title} y ${ErrorEstandarDescription.title}`}  _types={VarianceDescription.types} _info={VarianceDescription.abstract} />
       <RedirectBox _height={"25rem"} _route={PublicRoutes.PERCENTILES} _title={"Percentiles"} _info={"Informacion sobre la redirección "} />
+      <RedirectBox _height={"25rem"} _route={PublicRoutes.SYMBOLS} _title={"Buscar Símbolos"} _info={"Informacion sobre la redirección "} />
       <RedirectBox _height={"25rem"} _title={"Valor en Tabla "} _info={"Informacion sobre la redirección "} />
-      <RedirectBox _height={"25rem"} _title={"Buscar Símbolos"} _info={"Informacion sobre la redirección "} />
       <RedirectBox _height={"25rem"} _title={"Gráficos Estadísticos"} _info={"Informacion sobre la redirección "} />
     </Box>
   );
