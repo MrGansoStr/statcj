@@ -5,12 +5,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Alert, AlertTitle, Box, Button, Collapse, FormControlLabel, IconButton, Stack, Switch, TextField, Typography } from '@mui/material';
+import { Alert, AlertTitle, Box, Button, Collapse, FormControlLabel, Grid, IconButton, Stack, Switch, TextField, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useEffect, useState } from 'react';
-import { calculateTotals, ProcessData } from '../../Calculations/CalculationsFrecuencyTables';
+import { calculateAmplitud, calculateInterval, calculateTotals, ProcessData } from '../../Calculations/CalculationsFrecuencyTables';
 import { ProcessInput } from './../../../utilities/ProcessInput';
-
+import React, { useCallback, useRef } from 'react';
+import { toPng } from 'html-to-image';
 
 function Calculator() {
   const [grouped, setGrouped] = useState(false);
@@ -19,6 +20,29 @@ function Calculator() {
   const [showError, setShowError] = useState(false);
   const [totals, setTotals] = useState({});
 
+  const [interval, setInteval] = useState({ value: '0' });
+  const [constantInterval, setconstantInterval] = useState(0);
+  const [amplitude, setAmplitude] = useState({ value: '0' });
+  const [constantAmplitude, setconstantAmplitude] = useState(0);
+
+  const ref = useRef(null);
+
+  const onButtonClick = useCallback(() => {
+    if (ref.current === null) {
+      return
+    }
+    toPng(ref.current, { cacheBust: true, })
+      .then((dataUrl) => {
+        const link = document.createElement('a')
+        link.download = 'table-image.png'
+        link.href = dataUrl
+        link.click()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [ref])
+
   const handleChangeRawData = (e) => {
     setRawData(e.target.value);
   }
@@ -26,12 +50,26 @@ function Calculator() {
     setGrouped(event.target.checked);
   };
 
-  const calculate = async () => {
+  const handleChangeInterval = (e) => {
+    setInteval({ value: e.target.value });
+  }
+
+  const handleChangeAmplitude = (e) => {
+    setAmplitude({ value: e.target.value });
+  }
+
+  const calculate = () => {
     if (RawData.length == 0) {
       setShowError(true);
     }
     else {
       setprocessedData(ProcessData(ProcessInput(RawData), grouped));
+      if (grouped) {
+        setAmplitude({ value: calculateAmplitud(ProcessInput(RawData)).toString() });
+        setInteval({ value: calculateInterval(ProcessInput(RawData).length).toString() });
+        setconstantInterval(calculateInterval(ProcessInput(RawData).length));
+        setconstantAmplitude(calculateAmplitud(ProcessInput(RawData)));
+      }
     }
   }
 
@@ -39,6 +77,11 @@ function Calculator() {
     setTotals(calculateTotals(processedData));
     return () => { }
   }, [processedData]);
+
+  useEffect(() => {
+    setprocessedData(ProcessData(ProcessInput(RawData), grouped, true, Number(interval.value), Number(amplitude.value)));
+    return () => { }
+  }, [interval.value, amplitude.value]);
   return (
     <>
       <Stack component="div" spacing={2} className="d-flex align-items-center justify-content-center m-0 m-auto py-5 w-75">
@@ -89,8 +132,40 @@ function Calculator() {
           </Alert>
         </Collapse>
       </Box>
-      <TableContainer component={Paper} className="py-4">
-        <Table sx={{ minWidth: 650 }} size="small" aria-label="Frecuency Table">
+      <Button className="" type="button" color="primary"  variant="outlined" onClick={onButtonClick}>Descargar Tabla Como PNG</Button>
+  
+      <TableContainer component={Paper}  className="py-4">
+        {
+          grouped ? (<>
+            <Grid container spacing={4} direction="row" className="px-3" alignItems="center">
+              <Grid item>
+                <Typography component="div" variant="inherit" >Para los Parámetros: </Typography>
+              </Grid>
+              <Grid item>
+                <TextField
+                  variant="standard"
+                  type="number"
+                  label="Intervalos"
+                  InputProps={{ inputProps: { min: constantInterval - 1, max: constantInterval + 1 } }}
+                  value={interval.value}
+                  onChange={handleChangeInterval}
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  variant="standard"
+                  type="number"
+                  label="Amplitud"
+                  InputProps={{ inputProps: { min: constantAmplitude - 1, max: constantAmplitude + 1 } }}
+                  value={amplitude.value}
+                  onChange={handleChangeAmplitude}
+                />
+              </Grid>
+            </Grid>
+          </>
+          ) : null
+        }
+        <Table sx={{ minWidth: 650 }} ref={ref} size="small" aria-label="Frecuency Table">
           <TableHead>
             <TableRow>
               <TableCell>{grouped ? 'Intevalo' : 'Xi'}</TableCell>
@@ -135,6 +210,7 @@ function Calculator() {
           </TableBody>
         </Table>
       </TableContainer>
+
     </>
   );
 }

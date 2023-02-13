@@ -8,12 +8,31 @@ export const redondeo = (val, _cifras = 4) =>{
  return Math.round((val + Number.EPSILON) * cifras) / cifras; 
 }
 
-const calcularK = (n) => {
-  let k = Math.log10(n);
-  return k;
+// K => interval - números de intervalos
+
+export const calculateInterval = (n) => {
+  let interval = 0;
+  if(n > 25){
+    interval = parseInt(Math.sqrt(n)); // K
+  }
+  else {
+    let tempInterval = 1 + (3.322 * Math.log10(n));
+    interval = parseInt(tempInterval); // k Sturges
+    if(interval % 2 == 0){
+      interval = interval + 1;
+    }
+  }
+  return interval;
 }
 
-export const ProcessData = (_inputData, _grouped = false) => {
+export const calculateAmplitud = (Data) => {
+  let max = Math.max(...Data);
+  let min= Math.min(...Data);
+  let interval = calculateInterval(Data.length);
+  return (parseInt((max - min) / interval) + 1);
+}
+
+export const ProcessData = (_inputData, _grouped = false, manualParameters = false, manualK = 0, manualC = 0) => {
   let RawDataGrouped;
   let DataGrouped = [];
   let max;
@@ -29,17 +48,8 @@ export const ProcessData = (_inputData, _grouped = false) => {
     max =  Math.max(...RawDataGrouped);
     min = Math.min(...RawDataGrouped);
     range = max - min;
-    if(RawDataGrouped.length > 25){
-      interval = parseInt(Math.sqrt(RawDataGrouped.length)); // K
-    }
-    else {
-      let tempInterval = 1 + (3.322 * Math.log10(RawDataGrouped.length));
-      interval = parseInt(tempInterval); // k Sturges
-      if(interval % 2 == 0){
-        interval = interval + 1;
-      }
-    }
-    amplitude = parseInt(range / interval)+1; // A
+    interval = manualParameters ?  manualK: calculateInterval(RawDataGrouped.length);
+    amplitude = manualParameters ?  manualC :calculateAmplitud(RawDataGrouped); // Amplitud 
     let newRange = interval * amplitude;
     let CorreccionDeIntevalo = parseInt((newRange - range)/2);
     min = min-CorreccionDeIntevalo;
@@ -81,7 +91,7 @@ export const ProcessData = (_inputData, _grouped = false) => {
     let acumuladorAbsoluta = 0;
     let acumuladorRelativa = 0;
 
-    for(let i = 0; i < DataWithouthRep.length; i++){
+    for(let i = 0; i < DataWithouthRep.length; i++) {
       let _veces = RawDataGrouped.filter(element => (element == DataWithouthRep[i])).length;
       let _relativa = (_veces/RawDataGrouped.length);
       acumuladorAbsoluta += _veces;
