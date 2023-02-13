@@ -6,16 +6,29 @@ const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const FrecuencyTables = lazy(() => import('./pages/FrecuencyTables/FrecuencyTables'));
 const Mct = lazy(() => import('./pages/MCT/Mct'));
 const Percentiles = lazy(() => import('./pages/Percentiles/Percentiles'));
+const SearchSymbol = lazy(() => import('./pages/SearchSymbol/SearchSymbol'));
 import RoutesNotFound from './utilities/RoutesNotFound';
 import Header from './StyledComponents/Header/Header';
 import Footer from './StyledComponents/Footer/Footer';
 import { PublicRoutes } from './models/routes';
 import VarianceAndError from './pages/VarianceAndError/VarianceAndError';
-const SearchSymbol = lazy(() => import('./pages/SearchSymbol/SearchSymbol'));
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#282a36',
+    },
+    secondary: {
+      main: '#443C68',
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
+    <ThemeProvider theme={theme}>
       <Suspense fallback={<>Cargando...</>}>
         <BrowserRouter>
           <Header />
@@ -31,6 +44,7 @@ function App() {
           <Footer />
         </BrowserRouter>
       </Suspense>
+    </ThemeProvider>
     </div>
   )
 }

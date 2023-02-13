@@ -99,7 +99,7 @@ function Calculator() {
           onChange={handleChangeRawData}
         />
         <Box component="span" className="">
-          <Button color="success" variant="outlined" onClick={calculate}>Calcular</Button>
+          <Button color="secondary" variant="outlined" onClick={calculate}>Calcular</Button>
         </Box>
         <FormControlLabel control={
           <Switch

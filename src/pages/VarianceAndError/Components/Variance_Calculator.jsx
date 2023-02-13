@@ -41,7 +41,7 @@ function Variance_Calculator() {
         onChange={handleChangeRawData}
       />
       <Box component="span" className="">
-        <Button color="success" variant="outlined" onClick={calculateVarianceAndError}>Calcular</Button>
+        <Button color="secondary" variant="outlined" onClick={calculateVarianceAndError}>Calcular</Button>
       </Box>
 
       <HowCalculate grouped={grouped} handleChangeGrouped={handleChangeGrouped} muestral={muestral} handleChangeMuestral={handleChangeMuestral} />

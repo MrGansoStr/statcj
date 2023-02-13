@@ -28,7 +28,7 @@ function MCT_calculator() {
         onChange={handleChangeRawData}
       />
       <Box component="span" className="">
-        <Button color="success" variant="outlined" onClick={calculateMCT}>Calcular</Button>
+        <Button color="secondary" variant="outlined" onClick={calculateMCT}>Calcular</Button>
       </Box>
       <Box component="div">
         <Typography component="p" variant="overline" className="fs-6">

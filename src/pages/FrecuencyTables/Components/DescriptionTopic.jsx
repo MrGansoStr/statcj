@@ -1,13 +1,13 @@
 import { Box, Paper, Typography } from "@mui/material";
 import { TablesFrecuencyDescription } from "../../../Descriptions/DescriptionsAllTopics/descriptions";
-import { MathComponent, useMathJax } from "mathjax-react";
+import { MathComponent } from "mathjax-react";
 
 function DescriptionTopic() {
   return (
     <>
       <Box component="div" className="p-4">
-        <Typography variant="h6">
-          {TablesFrecuencyDescription.fullInfo}
+        <Typography variant="h5">
+          Teoría
         </Typography>
         <Typography component="p" variant="body1" className="py-1 mt-2">
           {TablesFrecuencyDescription.parts.range}

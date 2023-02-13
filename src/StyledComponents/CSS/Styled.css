@@ -5,17 +5,25 @@
 /* REDIRECT BOX */
 
 .update-view-link:hover {
-  color: #5c6bc0;
+  color: rgb(105, 99, 134);
   font-size: 2.36rem;
   transition: linear 0.15s;
 }
 
 /* HEADER */
 
-.update-view-link-header:hover{
+
+.color-header li a {
+  color:white !important;
+}
+.color-logo {
   color: white !important;
+}
+
+.update-view-link-header:hover{
   font-size: 1.7rem !important;
-  transition: all linear 0.2s;
+  border-bottom: white solid 2px;
+  transition: all linear 0.3s;
   font-weight: bold !important;
 }
 
@@ -23,15 +31,17 @@
   position: sticky;
   position: -webkit-sticky;
   z-index: 5;
-  background-color: #a7a6a6;
   top: 0;
 }
 
 /* FOOTER */
 
 .colors-footer {
-  background-color: #b4b1b1;
+ margin: auto;
 }
+
+
+
 
 .update-view-link-footer:hover {
   color: white !important;

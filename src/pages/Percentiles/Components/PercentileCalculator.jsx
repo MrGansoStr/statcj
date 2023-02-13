@@ -28,7 +28,7 @@ function PercentileCalculator() {
   return (
     <Box component="div">
       <Stack component="div" spacing={3} className="p-3 mt-3 d-flex align-items-center justify-content-center">
-        <Typography>Calcular Percentiles, Quartiles y Deciles</Typography>
+        <Typography variant="h5">Calcular Percentiles, Quartiles y Deciles</Typography>
         <TextField
           type="text"
           id="standard-multiline-flexible"
@@ -50,7 +50,7 @@ function PercentileCalculator() {
           onChange={handleChangeTheNumK}
         />
         <Box component="span" className="">
-          <Button color="success" variant="outlined" onClick={calculatePercentil}>Calcular</Button>
+          <Button color="secondary" variant="outlined" onClick={calculatePercentil}>Calcular</Button>
         </Box>
         <FormControlLabel control={
           <Switch

@@ -33,7 +33,7 @@ function BoxSymbol({_name ="a", _urlSymbol = "b", _Description = "c", _idSymbol 
           </Typography>
         </CardContent>
         <CardActions>
-          <Button onClick={handleOpenInfo} type="button" variant="outlined" size="small">Ver más</Button>
+          <Button color="secondary" onClick={handleOpenInfo} type="button" variant="outlined" size="small">Ver más</Button>
         </CardActions>
       </Card>
     {/*

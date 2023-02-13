@@ -6,8 +6,8 @@ import { PublicRoutes } from './../../../models/routes';
 function TermsAndConditions() {
   return (
     <>
-      <Typography component="div" variant="overline" className="h-25 border text-center fw-bold">Términos y Condiciones</Typography>
-      <Box component="ul" className="navbar-nav h-75 border align-items-center">
+      <Typography component="div" variant="overline" className="h-25 text-center fw-bold">Términos y Condiciones</Typography>
+      <Box component="ul" className="navbar-nav h-75 align-items-center">
         <Typography component="li" className="nav-item">
           <Link className="nav-link update-view-link-footer" to={PublicRoutes.HOME}>Términos</Link>
         </Typography>
