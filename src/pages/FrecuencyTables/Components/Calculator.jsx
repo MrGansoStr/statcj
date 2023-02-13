@@ -5,7 +5,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Alert, AlertTitle, Box, Button, Collapse, FormControlLabel, Grid, IconButton, Stack, Switch, TextField, Typography } from '@mui/material';
+import { Alert, AlertTitle, Box, Button, Collapse, Divider, FormControlLabel, Grid, IconButton, Stack, Switch, TextField, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useEffect, useState } from 'react';
 import { calculateAmplitud, calculateInterval, calculateTotals, ProcessData } from '../../Calculations/CalculationsFrecuencyTables';
@@ -134,7 +134,7 @@ function Calculator() {
       </Box>
       <Button className="" type="button" color="primary"  variant="outlined" onClick={onButtonClick}>Descargar Tabla Como PNG</Button>
   
-      <TableContainer component={Paper}  className="py-4">
+      <TableContainer component={Paper} ref={ref} style={{backgroundColor: "white"}} className="py-4">
         {
           grouped ? (<>
             <Grid container spacing={4} direction="row" className="px-3" alignItems="center">
@@ -161,11 +161,17 @@ function Calculator() {
                   onChange={handleChangeAmplitude}
                 />
               </Grid>
+              <Grid item className=" p-1 d-flex align-items-end justify-content-end m-0 m-auto">
+              <Stack>
+                <Typography component="span" className="fs-6 fw-bold" variant="overline"> By StatCJ </Typography>
+                <Typography component="span" variant="body1"> https://statcj.vercel.app </Typography>
+              </Stack>
+              </Grid>
             </Grid>
           </>
           ) : null
         }
-        <Table sx={{ minWidth: 650 }} ref={ref} size="small" aria-label="Frecuency Table">
+        <Table sx={{ minWidth: 650 }} size="small" aria-label="Frecuency Table">
           <TableHead>
             <TableRow>
               <TableCell>{grouped ? 'Intevalo' : 'Xi'}</TableCell>
