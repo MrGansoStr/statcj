@@ -21,6 +21,9 @@
   overflow: scroll !important;
 }
 
-.static-anchor {
-  width: 3rem;
+.static-header-table {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 6;
+  top: -1px;
 }
