@@ -7,12 +7,14 @@ const FrecuencyTables = lazy(() => import('./pages/FrecuencyTables/FrecuencyTabl
 const Mct = lazy(() => import('./pages/MCT/Mct'));
 const Percentiles = lazy(() => import('./pages/Percentiles/Percentiles'));
 const SearchSymbol = lazy(() => import('./pages/SearchSymbol/SearchSymbol'));
+const SearchValueZ = lazy(() => import('./pages/SearchValueZ/SearchValueZ'));
 import RoutesNotFound from './utilities/RoutesNotFound';
 import Header from './StyledComponents/Header/Header';
 import Footer from './StyledComponents/Footer/Footer';
 import { PublicRoutes } from './models/routes';
 import VarianceAndError from './pages/VarianceAndError/VarianceAndError';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 
 const theme = createTheme({
   palette: {
@@ -40,6 +42,7 @@ function App() {
             <Route path={PublicRoutes.VARIANCE} element={<VarianceAndError />} />
             <Route path={PublicRoutes.PERCENTILES} element={<Percentiles />} />
             <Route path={PublicRoutes.SYMBOLS} element={<SearchSymbol />} />
+            <Route path={PublicRoutes.SEARCHZ} element={<SearchValueZ/>} />
           </RoutesNotFound>
           <Footer />
         </BrowserRouter>

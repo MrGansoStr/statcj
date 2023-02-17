@@ -7,7 +7,7 @@ import '../CSS/Styled.css'
 
 function Header() {
   const theme = useTheme();
-  console.log(theme);
+  //console.log(theme);
   return (
     <>
       <Box className="static-view-header" >
