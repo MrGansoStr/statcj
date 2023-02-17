@@ -15,3 +15,12 @@
   margin: 1rem solid black;
   border: 1rem solid #797979;
 }
+
+/* TABLE Z */
+.oneform {
+  overflow: scroll !important;
+}
+
+.static-anchor {
+  width: 3rem;
+}
