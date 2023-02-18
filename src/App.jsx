@@ -14,6 +14,7 @@ import Footer from './StyledComponents/Footer/Footer';
 import { PublicRoutes } from './models/routes';
 import VarianceAndError from './pages/VarianceAndError/VarianceAndError';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import StatGraphs from './pages/StatGraphs/StatGraphs';
 
 
 const theme = createTheme({
@@ -43,6 +44,7 @@ function App() {
             <Route path={PublicRoutes.PERCENTILES} element={<Percentiles />} />
             <Route path={PublicRoutes.SYMBOLS} element={<SearchSymbol />} />
             <Route path={PublicRoutes.SEARCHZ} element={<SearchValueZ/>} />
+            <Route path={PublicRoutes.GRAPHS} element={<StatGraphs/>} />
           </RoutesNotFound>
           <Footer />
         </BrowserRouter>

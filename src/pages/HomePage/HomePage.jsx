@@ -14,7 +14,7 @@ function HomePage() {
       <RedirectBox _height={"25rem"} _route={PublicRoutes.PERCENTILES} _title={"Percentiles"} _info={"Informacion sobre la redirección "} />
       <RedirectBox _height={"25rem"} _route={PublicRoutes.SYMBOLS} _title={"Buscar Símbolos"} _info={"Informacion sobre la redirección "} />
       <RedirectBox _height={"25rem"} _route={PublicRoutes.SEARCHZ} _title={"Valor en Tabla "} _info={"Informacion sobre la redirección "} />
-      <RedirectBox _height={"25rem"} _title={"Gráficos Estadísticos"} _info={"Informacion sobre la redirección "} />
+      <RedirectBox _height={"25rem"} _route={PublicRoutes.GRAPHS} _title={"Gráficos Estadísticos"} _info={"Informacion sobre la redirección "} />
     </Box>
   );
 }

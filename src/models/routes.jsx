@@ -5,5 +5,6 @@ export const PublicRoutes = {
   VARIANCE: "varianceanderror",
   PERCENTILES: "percentile",
   SYMBOLS: "symbols",
-  SEARCHZ: "searchz"
+  SEARCHZ: "searchz",
+  GRAPHS: "graphs"
 }
