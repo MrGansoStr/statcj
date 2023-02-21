@@ -61,7 +61,6 @@ const toMem = () => {
           color="secondary"
           label="Valor z"
           className="w-50"
-          ref={InputToTest}
           onChange={handleChangeZ}
         />
         <Box component="div">
