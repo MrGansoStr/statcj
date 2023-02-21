@@ -17,6 +17,7 @@ import { Bar } from 'react-chartjs-2';
 import { Box, Typography, useTheme } from '@mui/material';
 
 import RechartsTest from './Components/RechartsTest';
+import BackPageButton from '../../StyledComponents/BackPageButton/BackPageButton';
 
 function StatGraphs(props) {
   const theme = useTheme();
@@ -88,6 +89,9 @@ function StatGraphs(props) {
 
   return (
     <Box component="div" className="container-lg">
+      <Box component="div" className="p-3">
+        <BackPageButton />
+      </Box>
       <Typography variant="h5" className="d-flex align-items-center justify-content-center p-4">Gráficos Estadísticos</Typography>
       <Box
         sx={{
@@ -98,7 +102,7 @@ function StatGraphs(props) {
       >
         <Bar options={options} data={data} />
       </Box>
-      <RechartsTest/>
+      <RechartsTest />
     </Box>
   );
 };

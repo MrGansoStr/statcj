@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <Box component="footer" className="colors-footer container-xxl border" style={{ backgroundColor: "#3C4048", color: "#fff" }}>
+    <Box component="footer" className="colors-footer container-xxl" style={{ backgroundColor: "#3C4048", color: "#fff" }}>
       <Grid container direction="row" spacing={4} justifyContent="space-evenly" alignItems="stretch" className=" mt-0 py-3 mb-3">
         <Grid item xs={3} className="d-flex justify-content-center align-items-center">
           <Typography component="div" variant="h6">StatCJ</Typography>

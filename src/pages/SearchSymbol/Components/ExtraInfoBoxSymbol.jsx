@@ -36,7 +36,7 @@ function BootstrapDialogTitle(props) {
             position: 'absolute',
             right: 8,
             top: 8,
-            color: (theme) => theme.palette.grey[500],
+            color: (theme) => theme.palette.primary.main,
           }}
         >
           <CloseIcon />
@@ -88,7 +88,7 @@ export default function CustomizedDialogs() {
         </Typography>
         </BootstrapDialogTitle>
         <DialogContent dividers>
-          <Typography gutterBottom>
+          <Typography component="div" gutterBottom>
             {TheInfoSymbol?.UrlSymbol}
           </Typography>
           <Typography gutterBottom>
@@ -98,6 +98,9 @@ export default function CustomizedDialogs() {
             Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus
             magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec
             ullamcorper nulla non metus auctor fringilla.
+          </Typography>
+          <Typography component="div">
+            {TheInfoSymbol?.ExtraInfos}
           </Typography>
         </DialogContent>
       </BootstrapDialog>

@@ -25,7 +25,7 @@ function BoxSymbol({_name ="a", _urlSymbol = "b", _Description = "c", _idSymbol 
           <Typography sx={{ fontSize: 14 }}  gutterBottom>
             {_name}
           </Typography>
-          <Typography variant="inherit" sx={{ mb: 1.5 }} >
+          <Typography component="div" variant="body1" sx={{ mb: 1.5 }} >
             {_urlSymbol}
           </Typography>
           <Typography variant="body2">
@@ -33,7 +33,7 @@ function BoxSymbol({_name ="a", _urlSymbol = "b", _Description = "c", _idSymbol 
           </Typography>
         </CardContent>
         <CardActions>
-          <Button color="secondary" onClick={handleOpenInfo} type="button" variant="outlined" size="small">Ver más</Button>
+          <Button color="secondary" onClick={handleOpenInfo} type="button" fullWidth variant="outlined" size="small">Ver más</Button>
         </CardActions>
       </Card>
     {/*

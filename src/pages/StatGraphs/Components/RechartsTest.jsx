@@ -47,43 +47,7 @@ const data1 = [
     "amt": 2100
   }
 ]
-const data2 = [
-  {
-    "name": "-5",
-    "valuex": -5,
-    "valuey": 0.001
-  },
-  {
-    "name": "-4",
-    "valuex": -4,
-    "valuey": 0.001
-  },
-  {
-    "name": "-3",
-    "valuex": -3,
-    "valuey": 0.01
-  },
-  {
-    "name": "0",
-    "valuex": 0,
-    "valuey": 0.4
-  },
-  {
-    "name": "3",
-    "valuex": 3,
-    "valuey": 0.01
-  },
-  {
-    "name": "4",
-    "valuex": 4,
-    "valuey": 0.001
-  },
-  {
-    "name": "5",
-    "valuex": 5,
-    "valuey": 0.001
-  }
-]
+
 
 function RechartsTest() {
 
