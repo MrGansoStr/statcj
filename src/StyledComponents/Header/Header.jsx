@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import '../CSS/Styled.css'
+import { PublicRoutes } from "../../models/routes";
 
 
 function Header() {
@@ -42,22 +43,17 @@ function Header() {
                 <Box component="ul" className="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center color-header">
                   <Box component="li" className="nav-item ">
                     <Link className="nav-link active update-view-link-header header-link" to="/">
-                      <Typography variant="overline">Home</Typography>
+                      <Typography variant="overline">Inicio</Typography>
                     </Link>
                   </Box>
                   <Box component="li" className="nav-item" >
-                    <Link className="nav-link active update-view-link-header" to="/">
-                      <Typography variant="overline" >Features</Typography>
+                    <Link className="nav-link active update-view-link-header" to={PublicRoutes.TOPICS}>
+                      <Typography variant="overline" >Temas</Typography>
                     </Link>
                   </Box>
                   <Box component="li" className="nav-item">
-                    <Link className="nav-link update-view-link-header" to="/">
-                      <Typography variant="overline">Pricing</Typography>
-                    </Link>
-                  </Box>
-                  <Box component="li" className="nav-item">
-                    <Link className="nav-link update-view-link-header" to="/">
-                      <Typography variant="overline">Probabilidades</Typography>
+                    <Link className="nav-link update-view-link-header" to={PublicRoutes.CALCULATOR}>
+                      <Typography variant="overline">Calculadoras</Typography>
                     </Link>
                   </Box>
                   <Box component="li" className="nav-item">
@@ -65,9 +61,23 @@ function Header() {
                       <Typography variant="overline">Muestreos</Typography>
                     </Link>
                   </Box>
+                  {
+                    /*
                   <Box component="li" className="nav-item">
-                    <Link className="nav-link active update-view-link-header" to="/">
-                      <Typography variant="overline">Modelos Estadísticos</Typography>
+                    <Link className="nav-link update-view-link-header" to="/">
+                      <Typography variant="overline">Probabilidades</Typography>
+                    </Link>
+                  </Box>
+                    */
+                  }
+                  <Box component="li" className="nav-item">
+                    <Link className="nav-link update-view-link-header" to={PublicRoutes.DISTRIBUTION_TABLES}>
+                      <Typography variant="overline">Buscar Valor en Tabla</Typography>
+                    </Link>
+                  </Box>
+                  <Box component="li" className="nav-item">
+                    <Link className="nav-link update-view-link-header" to={PublicRoutes.SEARCH_SYMBOL}>
+                      <Typography variant="overline">Buscar Símbolos</Typography>
                     </Link>
                   </Box>
                 </Box>

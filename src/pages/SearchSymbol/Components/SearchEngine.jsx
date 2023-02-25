@@ -1,8 +1,7 @@
 import { Box, TextField } from "@mui/material";
-import { useState } from 'react';
 import { UseContextSymbols } from "../ContextSearchSymbols";
 
-function SearchEngine(_nameSymbol) {
+function SearchEngine() {
 
   let { wordToSearch, setWordToSearch } = UseContextSymbols();
 
