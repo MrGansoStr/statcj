@@ -12,6 +12,9 @@ import { calculateAmplitud, calculateInterval, calculateTotals, ProcessData } fr
 import { ProcessInput } from './../../../../utilities/ProcessInput';
 import React, { useCallback, useRef } from 'react';
 import { toPng } from 'html-to-image';
+import StyledErrorInput from '../../../../StyledComponents/StyledErrorInput/StyledErrorInput';
+import { ThereErrors } from '../../../../utilities/ThereErrors';
+
 
 function Calculator() {
   const [grouped, setGrouped] = useState(false);
@@ -19,7 +22,6 @@ function Calculator() {
   const [processedData, setprocessedData] = useState([]);
   const [showError, setShowError] = useState(false);
   const [totals, setTotals] = useState({});
-
   const [interval, setInteval] = useState({ value: '0' });
   const [constantInterval, setconstantInterval] = useState(0);
   const [amplitude, setAmplitude] = useState({ value: '0' });
@@ -58,8 +60,11 @@ function Calculator() {
     setAmplitude({ value: e.target.value });
   }
 
+  const HideError = (e) => {
+    setShowError(false);
+  }
   const calculate = () => {
-    if (RawData.length == 0) {
+    if (ThereErrors(RawData)) {
       setShowError(true);
     }
     else {
@@ -108,33 +113,10 @@ function Calculator() {
             inputProps={{ 'aria-label': 'controlled' }}
           />} label={`${grouped ? 'Datos AGRUPADOS' : 'Datos NO AGRUPADOS'}`} />
       </Stack>
-      <Box component="div" className="d-flex align-items-center justify-content-center">
-        <Collapse in={showError}>
-          <Alert
-            className="p-3"
-            severity="error"
-            action={
-              <IconButton
-                aria-label="close"
-                color="inherit"
-                size="small"
-                onClick={() => {
-                  setShowError(false);
-                }}
-              >
-                <CloseIcon fontSize="inherit" />
-              </IconButton>
-            }
-            sx={{ mb: 2 }}
-          >
-            <AlertTitle>Error</AlertTitle>
-            <Typography className="fw-bold" variant="inherit">Los datos no están correctamente ingresados</Typography>
-          </Alert>
-        </Collapse>
-      </Box>
-      <Button className="" type="button" color="primary"  variant="outlined" onClick={onButtonClick}>Descargar Tabla Como PNG</Button>
-  
-      <TableContainer component={Paper} ref={ref} style={{backgroundColor: "white"}} className="py-4">
+      {showError ? <StyledErrorInput show={showError} HideError={HideError} /> : null}
+      <Button type="button" color="primary" variant="outlined" onClick={onButtonClick}>Descargar Tabla Como PNG</Button>
+
+      <TableContainer component={Paper} ref={ref} style={{ backgroundColor: "white" }} className="py-4">
         {
           grouped ? (<>
             <Grid container spacing={4} direction="row" className="px-3" alignItems="center">
@@ -162,10 +144,10 @@ function Calculator() {
                 />
               </Grid>
               <Grid item className=" p-1 d-flex align-items-end justify-content-end m-0 m-auto">
-              <Stack>
-                <Typography component="span" className="fs-6 fw-bold" variant="overline"> By StatCJ </Typography>
-                <Typography component="span" variant="body1"> https://statcj.vercel.app </Typography>
-              </Stack>
+                <Stack>
+                  <Typography component="span" className="fs-6 fw-bold" variant="overline"> By StatCJ </Typography>
+                  <Typography component="span" variant="body1"> https://statcj.vercel.app </Typography>
+                </Stack>
               </Grid>
             </Grid>
           </>

@@ -2,12 +2,19 @@ import { Box, Button, FormControlLabel, Stack, Switch, TextField, Typography } f
 import { useState } from 'react';
 import { CalculateAllPercentil } from "../../../Calculations/CalculationsPercentiles";
 import { ProcessInput } from '../../../../utilities/ProcessInput';
+import StyledErrorInput from "../../../../StyledComponents/StyledErrorInput/StyledErrorInput";
+import { ThereErrors } from "../../../../utilities/ThereErrors";
 
 function PercentileCalculator() {
   const [rawData, setrawData] = useState("");
   const [grouped, setGrouped] = useState(true);
   const [calculatedPercentil, setcalculatedPercentil] = useState(null);
   const [TheNumK, setTheNumK] = useState(0);
+  const [showError, setShowError] = useState(false);
+
+  const HideError = (e) => {
+    setShowError(false);
+  }
 
   const handleChangeTheNumK = (e) => {
     setTheNumK(Number(e.target.value))
@@ -22,7 +29,12 @@ function PercentileCalculator() {
   }
 
   const calculatePercentil = () => {
-    setcalculatedPercentil(CalculateAllPercentil(ProcessInput(rawData), TheNumK ,grouped))
+    if(ThereErrors(rawData) || ThereErrors(TheNumK, "percentil")){
+      setShowError(true);
+    }
+    else {
+      setcalculatedPercentil(CalculateAllPercentil(ProcessInput(rawData), TheNumK ,grouped))
+    }
   }
 
   return (
@@ -59,6 +71,7 @@ function PercentileCalculator() {
             inputProps={{ 'aria-label': 'controlled' }}
           />} label={`${grouped ? 'Datos AGRUPADOS' : 'Datos NO AGRUPADOS'}`} />
       </Stack>
+      { showError ? <StyledErrorInput show={showError} HideError={HideError}/> : null }
       <Box component="div">
         <Typography component="p" variant="overline" className="fs-6">
           Percentil {calculatedPercentil ? calculatedPercentil.numk : "nn"}:

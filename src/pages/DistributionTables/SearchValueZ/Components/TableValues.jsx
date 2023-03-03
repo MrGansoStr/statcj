@@ -3,9 +3,7 @@ import { memo } from "react";
 import { useState } from "react";
 import HeadValuesZ from "./HeadValuesZ";
 
-
-
-const TableData = ({ valuesZ }) => {
+const TableValues = memo(({ valuesZ }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(15);
   const handleChangePage = (event, newPage) => {
@@ -53,6 +51,7 @@ const TableData = ({ valuesZ }) => {
       <Box component="div" className="container">
         <TablePagination
           className="align-items-end justify-content-end"
+          labelRowsPerPage={"Filas Por Páginas"}
           rowsPerPageOptions={[15, 25, 35, 45, 55, 100]}
           component="div"
           count={valuesZ.length}
@@ -64,6 +63,5 @@ const TableData = ({ valuesZ }) => {
       </Box>
     </>
   );
-};
-const TableValues = memo(TableData);
+});
 export default TableValues;

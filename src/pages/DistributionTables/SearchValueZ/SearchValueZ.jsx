@@ -6,6 +6,7 @@ import TableValues from './Components/TableValues';
 import { useMemo } from 'react';
 import { memo } from 'react';
 import GaussianBell from '../../StatGraphs/Components/GaussianBell';
+import { useCallback } from 'react';
 
 const initialStateValuesZ = [
   { valueZ: 1.5, values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }
@@ -16,8 +17,6 @@ const toMem = () => {
   const [resultZ, setResultZ] = useState(null);
 
   const [valuesZ, setValuesZ] = useState(initialStateValuesZ);
-
-  const TableVals = useMemo(() => valuesZ, [valuesZ]);
 
   useEffect(() => {
     AllSetValuesZ();
@@ -33,10 +32,8 @@ const toMem = () => {
   }
 
   const handleChangeZ = (e) => {
-
     setValueToSearch(e.target.value);
   }
-
 
   return (
     <Box component="div" className="p-2 mt-2">
@@ -44,7 +41,7 @@ const toMem = () => {
       <Box component="div">
         <GaussianBell />
       </Box>
-      <TableValues valuesZ={TableVals} />
+      <TableValues valuesZ={valuesZ} />
       <Typography variant="h5" className="d-flex align-items-center justify-content-center py-4">Encontrar el valor Z</Typography>
       <Stack component="div" spacing={3} className="align-items-center justify-content-center mt-4">
         <Typography component="p" variant="inherit" >

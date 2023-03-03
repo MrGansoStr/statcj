@@ -4,12 +4,19 @@ import { useState } from 'react';
 import { CalculateVarianceAndError } from '../../../Calculations/CalculationsVarianceAndError';
 import HowCalculate from '../../../UtilitiesComponents/HowCalculate';
 import { ProcessInput } from '../../../../utilities/ProcessInput';
+import { ThereErrors } from '../../../../utilities/ThereErrors';
+import StyledErrorInput from '../../../../StyledComponents/StyledErrorInput/StyledErrorInput';
 function Variance_Calculator() {
 
   const [rawData, setRawData] = useState("");
   const [calculatedData, setcalculatedData] = useState(null);
   const [grouped, setGrouped] = useState(false);
   const [muestral, setMuestral] = useState(false);
+  const [showError, setShowError] = useState(false);
+
+  const HideError = (e) => {
+    setShowError(false);
+  }
 
   const handleChangeRawData = (e) => {
     setRawData(e.target.value);
@@ -24,7 +31,12 @@ function Variance_Calculator() {
   }
 
   const calculateVarianceAndError = () => {
-    setcalculatedData(CalculateVarianceAndError(ProcessInput(rawData), grouped, muestral));
+    if(ThereErrors(rawData)) {
+      setShowError(true);
+    }
+    else {
+      setcalculatedData(CalculateVarianceAndError(ProcessInput(rawData), grouped, muestral)); 
+    }
   }
   return (
     <Stack component="div" spacing={3} className="d-flex align-items-center justify-content-center">
@@ -45,7 +57,7 @@ function Variance_Calculator() {
       </Box>
 
       <HowCalculate grouped={grouped} handleChangeGrouped={handleChangeGrouped} muestral={muestral} handleChangeMuestral={handleChangeMuestral} />
-      
+      { showError ? <StyledErrorInput show={showError} HideError={HideError}/> : null }
       <Box component="div" className="py-4">
         <Typography component="p" variant="overline" className="fs-6">
           Varianza: <b>
