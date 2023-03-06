@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { TopicsRoutes } from "../../models/routes";
 import RedirectBox from "../../StyledComponents/RedirectBox/RedirectBox";
 
-function MainTopicTeory() {
+function MainTopicTheory() {
   return (
     <Box component="div" className="container-lg">
       <RedirectBox _height={"25rem"} _route={TopicsRoutes.MEDIA} _title={"Media"} />
@@ -13,4 +13,4 @@ function MainTopicTeory() {
     </Box>
   );
 }
-export default MainTopicTeory;
+export default MainTopicTheory;
