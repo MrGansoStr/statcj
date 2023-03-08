@@ -1,19 +1,36 @@
-import { AppBar, Box, Grid, Typography, useTheme} from "@mui/material";
+import { AppBar, Box, Grid, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import '../CSS/Styled.css'
 import { PublicRoutes } from "../../models/routes";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import UserLogged from "../UserLogged/UserLogged";
 
 
 function Header() {
   const theme = useTheme();
-  //console.log(theme);
+
+  const userState = useSelector(store => store.user);
+  const [isLogged, setIsLogged] = useState(false);
+  useEffect(() => {
+    
+    if (userState.username) {
+      setIsLogged(true);
+    }
+    else if(userState.idUser === 0){
+      setIsLogged(false);
+    }
+    return () => { }
+  }, [userState]);
+  
+  
   return (
     <>
       <Box className="static-view-header" >
-        <AppBar component="nav"  position="sticky" color="primary" className=" container-xxl navbar navbar-expand-lg py-0">
-          <Box component="div" className="container-fluid " style={{ borderBottom: "0"}}>
+        <AppBar component="nav" position="sticky" color="primary" className=" container-xxl navbar navbar-expand-lg py-0">
+          <Box component="div" className="container-fluid " style={{ borderBottom: "0" }}>
             <Link className="navbar-brand w-25 text-center color-logo" to="/">
               <Typography
                 variant="overline"
@@ -23,7 +40,7 @@ function Header() {
               </Typography>
             </Link>
             <IconButton
-              className="navbar-toggler without-shadow" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" 
+              className="navbar-toggler without-shadow" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText"
               size="large"
               edge="start"
               color="inherit"
@@ -82,21 +99,28 @@ function Header() {
                   </Box>
                 </Box>
               </Grid>
-
-              <Grid item xs="auto"  className="p-2">
-                <Grid container justifyContent="flex-end" alignItems="center">
-                  <Grid item xs="auto" className="mx-2">
-                    <Link className="nav-link active update-view-link-header" to="/">
-                      <Typography component="span" variant="overline"> Login </Typography>
-                    </Link>
-                  </Grid>
-                  <Grid item xs="auto" className="mx-2">
-                    <Link className="nav-link active update-view-link-header" to="/">
-                      <Typography component="span" variant="overline"> Registro </Typography>
-                    </Link>
-                  </Grid>
-                </Grid>
-              </Grid>
+              {
+                isLogged ? (
+                  <UserLogged />
+                ) : (
+                  <>
+                    <Grid item xs="auto" className="p-2">
+                      <Grid container justifyContent="flex-end" alignItems="center">
+                        <Grid item xs="auto" className="mx-2">
+                          <Link className="nav-link active update-view-link-header" to={PublicRoutes.LOGIN}>
+                            <Typography component="span" variant="overline"> Login </Typography>
+                          </Link>
+                        </Grid>
+                        <Grid item xs="auto" className="mx-2">
+                          <Link className="nav-link active update-view-link-header" to={PublicRoutes.REGISTER}>
+                            <Typography component="span" variant="overline"> Registro </Typography>
+                          </Link>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </>
+                )
+              }
             </Grid>
           </Box>
         </AppBar>
