@@ -13,7 +13,17 @@ export const PublicRoutes = {
   DISTRIBUTION_TABLES: "distributions",
   SEARCH_SYMBOL: "symbols",
   TOPICS: "topics",
-  SYMBOLS: "symbols"
+  SYMBOLS: "symbols",
+  LOGIN: "login",
+  REGISTER: "register",
+  RECOVERY: "recoverypassword"
+}
+
+export const PrivateRoutes = {
+  PRIVATE: "private",
+  HOME: "",
+  PROFILE: "profile",
+  COMMENTS: "comments"
 }
 
 /*
