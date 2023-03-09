@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ValidateEmail } from "../utilities/ValidateEmail";
+import { GenderModel } from './../models/InitialUser';
 
 const UseRegister = () => {
   const [username, setUsername] = useState("");
@@ -10,6 +11,7 @@ const UseRegister = () => {
   const [lastNames, setLastNames] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [showError, setShowError] = useState(false);
+  const [gender, setGender] = useState(GenderModel.default);
 
   const ChangeUsername = (e) => {
     e.preventDefault();
@@ -45,6 +47,11 @@ const UseRegister = () => {
     setAcceptTerms(!acceptTerms);
   }
 
+  const ChangeGender = (e) => {
+    e.preventDefault();
+    setGender(e.target.value);
+  }
+
   const HideError = (e) => {
     e.preventDefault();
     setShowError(false)
@@ -62,6 +69,11 @@ const UseRegister = () => {
       console.log("Hay Algun Error en su Email");
       return;
     }
+    if(gender === 0) {
+      setShowError(true);
+      console.log("Seleccione un género");
+      return;
+    }
     if(acceptTerms === false) {
       setShowError(true);
       console.log("El usuario debe aceptar los terminos y condiciones");
@@ -73,6 +85,6 @@ const UseRegister = () => {
     }
   }
 
-  return {username, password, email, names, lastNames, acceptTerms, showError, HideError, ChangeUsername, ChangePassword, ChangeEmail, ChangeNames, ChangeLastNames, RegisterUser, ChangeAcceptTerms, ChangeSamePassword };
+  return {username, password, email, names, lastNames, acceptTerms, showError, gender, ChangeGender, HideError, ChangeUsername, ChangePassword, ChangeEmail, ChangeNames, ChangeLastNames, RegisterUser, ChangeAcceptTerms, ChangeSamePassword };
 }
 export default UseRegister;

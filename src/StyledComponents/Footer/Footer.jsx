@@ -15,6 +15,9 @@ function Footer() {
         </Grid>
         <Grid item xs={4} className="boder p-2 w-25">
           <Typography component="div" variant="inherit" className="d-flex align-items-start justify-content-start p-2">
+            <Link to={PublicRoutes.COMMENTS}>Comentarios y Discuciones</Link>
+          </Typography>
+          <Typography component="div" variant="inherit" className="d-flex align-items-start justify-content-start p-2">
             Ayuda
           </Typography>
           <Typography component="div" variant="inherit" className="d-flex align-items-start justify-content-start p-2">

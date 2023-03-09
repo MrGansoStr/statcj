@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import reactLogo from './assets/react.svg';
 const SearchSymbol = lazy(() => import('./pages/SearchSymbol/SearchSymbol'));
 import RoutesNotFound from './utilities/RoutesNotFound';
@@ -19,6 +19,7 @@ import { Provider } from 'react-redux';
 import UserStore from './redux/StoreUser';
 import AuthGuard from './guards/AuthGuard';
 import RoutesPrivate from './Routes/RoutesPrivate';
+const Comments = lazy(() => import('./pages/PublicPages/Comments/Comments'));
 
 function App() {
   return (
@@ -34,11 +35,12 @@ function App() {
                 <Route path={`${PublicRoutes.TOPICS}/*`} element={<RoutesTopics />} />
                 <Route path={`${PublicRoutes.DISTRIBUTION_TABLES}/*`} element={<RoutesDistributions />} />
                 <Route path={PublicRoutes.SYMBOLS} element={<SearchSymbol />} />
+                <Route path={PublicRoutes.COMMENTS} element={<Comments/>} />
                 <Route path={PublicRoutes.LOGIN} element={<Login />} />
                 <Route path={PublicRoutes.REGISTER} element={<Register />} />
                 <Route path={PublicRoutes.RECOVERY} element={<RecoveryPassword />} />
-                <Route element={<AuthGuard IsPrivate={true}/>} >
-                  <Route path={`${PrivateRoutes.PRIVATE}/*`} element={<RoutesPrivate/>} />
+                <Route element={<AuthGuard IsPrivate={true} />} >
+                  <Route path={`${PrivateRoutes.PRIVATE}/*`} element={<RoutesPrivate />} />
                 </Route>
               </RoutesNotFound>
               <Footer />
