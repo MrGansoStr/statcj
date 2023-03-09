@@ -16,7 +16,8 @@ export const PublicRoutes = {
   SYMBOLS: "symbols",
   LOGIN: "login",
   REGISTER: "register",
-  RECOVERY: "recoverypassword"
+  RECOVERY: "recoverypassword",
+  COMMENTS: "comments"
 }
 
 export const PrivateRoutes = {

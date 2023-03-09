@@ -1,13 +1,14 @@
-import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, Paper, TextField, Typography } from "@mui/material";
+import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
 import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
 import { Link } from "react-router-dom";
 import UseRegister from "../../Hooks/UseRegister";
 import { PublicRoutes } from "../../models/routes";
 import StyledErrorInput from "../../StyledComponents/StyledErrorInput/StyledErrorInput";
+import { GenderModel } from './../../models/InitialUser';
 
 function Register() {
 
-  const { acceptTerms, showError, HideError, ChangeUsername, ChangePassword, ChangeEmail, ChangeNames, ChangeLastNames, ChangeAcceptTerms, RegisterUser, ChangeSamePassword } = UseRegister();
+  const { acceptTerms, showError, gender, ChangeGender, HideError, ChangeUsername, ChangePassword, ChangeEmail, ChangeNames, ChangeLastNames, ChangeAcceptTerms, RegisterUser, ChangeSamePassword } = UseRegister();
 
   return (
     <Box component="div" className="container-lg d-flex align-items-center justify-content-center">
@@ -79,6 +80,22 @@ function Register() {
                 name="LastNames"
                 onChange={ChangeLastNames}
               />
+              <FormControl required variant="standard" fullWidth className="py-3">
+                <Select
+                  labelId="gender"
+                  id="demo-simple-select"
+                  sx={{ maxWidth: "200px" }}
+                  value={gender}
+                  defaultValue={gender}
+                  label="Rol"
+                  onChange={ChangeGender}
+                >
+                  <MenuItem value={GenderModel.default}>Género</MenuItem>
+                  <MenuItem value={GenderModel.male}>Hombre</MenuItem>
+                  <MenuItem value={GenderModel.female}>Mujer</MenuItem>
+                  <MenuItem value={GenderModel.preferNotSay}>Prefiero No Decirlo</MenuItem>
+                </Select>
+              </FormControl>
             </FormControl>
             {
               showError ? <Box component="div" className="p-3"><StyledErrorInput show={showError} HideError={HideError} /></Box> : null
