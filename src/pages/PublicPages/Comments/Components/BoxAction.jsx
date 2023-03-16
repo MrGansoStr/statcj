@@ -7,7 +7,7 @@ import UseComment from './../../../../Hooks/UseComment';
 import { Button, FormControl, FormGroup, TextField } from '@mui/material';
 
 function BoxAction({ showAction = false, HideAction, TypeAction = "answer", InfoComment}) {
-  const { showError, HideError, EditComment, MakeAnswer } = UseComment();
+  const { showError, actionComment, ChangeActionComment, HideError, EditComment, MakeAnswer } = UseComment();
   return (
     <Collapse in={showAction}>
       <form>
@@ -17,7 +17,7 @@ function BoxAction({ showAction = false, HideAction, TypeAction = "answer", Info
             type="text"
             multiline
             rows={4}
-            defaultValue="Comentario"
+            onChange={ChangeActionComment}
           />
           {
             showError ? <Box component="div" className="p-3"><StyledErrorInput show={showError} HideError={HideError} /></Box> : null
@@ -27,13 +27,13 @@ function BoxAction({ showAction = false, HideAction, TypeAction = "answer", Info
               <Box alignItems="end" className="p-2">
                 <Button onClick={HideAction} type="button" color="error" variant="outlined" sx={{ maxWidth: 170 }}>Cancelar</Button>
                 &nbsp;
-                <Button onClick={event => EditComment(event, InfoComment)} type="button" color="primary" variant="outlined" sx={{ maxWidth: 170 }}>Editar Comentario</Button>
+                <Button onClick={event => EditComment(event, InfoComment, actionComment)} type="button" color="primary" variant="outlined" sx={{ maxWidth: 170 }}>Editar</Button>
               </Box>
             ) : (
               <Box alignItems="end" className="p-2">
                 <Button onClick={HideAction} type="button" color="error" variant="outlined" sx={{ maxWidth: 170 }}>Cancelar</Button>
                 &nbsp;
-                <Button onClick={event => MakeAnswer(event, InfoComment)} type="button" color="primary" variant="outlined" sx={{ maxWidth: 170 }}>Responder Comentario</Button>
+                <Button onClick={event => MakeAnswer(event, InfoComment, actionComment)} type="button" color="primary" variant="outlined" sx={{ maxWidth: 170 }}>Responder</Button>
               </Box>
             )}
             {/*

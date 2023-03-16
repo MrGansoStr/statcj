@@ -5,9 +5,16 @@ const UseComment = () => {
   const [showError, setShowError] = useState(false);
   const [showAction, setShowAction] = useState(false);
   const [typeAction, setTypeAction] = useState("answer");
+  const [actionComment, setActionComment] = useState("");
+
   const ChangeComment = (e) => {
     e.preventDefault();
     setComment(e.target.value);
+  }
+
+  const ChangeActionComment = (e) => {
+    e.preventDefault();
+    setActionComment(e.target.value);
   }
 
   const HideError = (e) => {
@@ -46,20 +53,28 @@ const UseComment = () => {
     }
   }
 
-  const MakeAnswer = (e, comment) => {
+  const MakeAnswer = (e, infoCommentToAnswer, comment) => {
     e.preventDefault();
-    setShowAction(true);
-    console.log(comment?.idComment);
-    console.log("Making Answer");
+    if(comment.length === 0){
+      setShowError(true);
+      console.log("La respuesta está vacia")
+      return;
+    }
+    console.log(infoCommentToAnswer?.idComment);
+    console.log("Make Answer s", actionComment);
   }
 
-  const EditComment = (e, comment) => {
+  const EditComment = (e, infoCommentToAnswer, comment) => {
     e.preventDefault();
-    setShowAction(true);
-    console.log(comment?.idComment);
-    console.log("Edit Comment");
+    if(comment.length === 0){
+      setShowError(true);
+      console.log("El edit no debe estar vacio");
+      return;
+    }
+    console.log(infoCommentToAnswer?.idComment);
+    console.log("Edit comment", actionComment);
   }
   
-  return {showError,typeAction, showAction, ChangeShowAction, HideShowAction, EditComment, MakeAnswer,ChangeComment, MakeComment, HideError};
+  return {showError,typeAction, showAction, actionComment, ChangeActionComment, ChangeShowAction, HideShowAction, EditComment, MakeAnswer,ChangeComment, MakeComment, HideError};
 }
 export default UseComment;

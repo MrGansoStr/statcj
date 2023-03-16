@@ -11,7 +11,7 @@ const UseFetchAndLoad = () => {
     setLoading(true);
     let result = {};
     try {
-      result = await axios.get('https://rickandmortyapi.com/api/character/2', { signal: signal }, controller);
+      result = await axios.get('https://statcj-api-rest.vercel.app/api/getcomments', { signal: signal }, controller);
     } catch (error) {
       setLoading(false);
       throw error;

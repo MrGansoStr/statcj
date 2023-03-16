@@ -11,12 +11,10 @@ import Comment from "./Comment";
 function BoxComments({ ArrayComments = [] }) {
   const { loading, CallEndpoint } = UseFetchAndLoad();
   const { showError, HideError, MakeComment } = UseComment();
-  /*
     const [data, setData] = useState(null);
     const getApiData = async () => await CallEndpoint();
-    useAsync(getApiData, (a) => setData(a), () => { });
-  */
-  let listComments = CommentsModelMain;
+    useAsync(getApiData, (a) => setData(a.data), () => { });
+  //let listComments = data;
   useEffect(() => {
     console.log("rendered");
   }, []);
@@ -52,9 +50,11 @@ function BoxComments({ ArrayComments = [] }) {
       )*/}
       </div>
       <div className="container">
-        {listComments.map((e, index) => (
+      {loading ? <Typography variant="h6">Cargando...</Typography>: (
+        data?.map((e, index) => (
           <Comment key={index} InfoComment={e} showMore={true} />
-        ))}
+        ))
+      )}
       </div>
 
     </>

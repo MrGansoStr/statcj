@@ -1,79 +1,66 @@
 
 export const CommentsModelMain = [
   {
-    idComment: 0,
-    userId: 2,
-    comment: "Comentario Padre",
-    numberLikes: 7,
-    numberDislikes: 3,
-    timeComment: new Date(),
-    childComments: [
+    "_id": "6409090962688ef7678d565f",
+    "idComment": 0,
+    "userId": 1,
+    "comment": "Comentario Editado ",
+    "numberLikes": 10,
+    "numberDislikes": 5,
+    "timeComment": "2023-03-08T22:15:37.373Z",
+    "childComments": [
+      1,
+      2
+    ],
+    "Usuario": {
+      "_id": "640f895d4845da25c6738ee3",
+      "idUser": 1,
+      "username": "usuariotest",
+      "gender": 1,
+      "name": "new admin name",
+      "lastName": "admin last name",
+      "email": "adming@admin.com"
+    },
+    "Comments": [
       {
-        idComment: 2,
-        userId: 2,
-        comment: "Comentario de respuesta hijo",
-        numberLikes: 7,
-        numberDislikes: 3,
-        timeComment: new Date(),
-        childComments: []
-      }, {
-        idComment: 3,
-        userId: 2,
-        comment: "Comentario de respuesta hijo",
-        numberLikes: 7,
-        numberDislikes: 3,
-        timeComment: new Date(),
-        childComments: []
+        "_id": "640a72b12af83d7ee8a3ef77",
+        "idComment": 1,
+        "userId": 1,
+        "comment": "Comentario Auto Incrementable",
+        "numberLikes": 7,
+        "numberDislikes": 3,
+        "timeComment": "2023-03-09T23:58:41.740Z",
+        "childComments": [],
+        "Usuario": {
+          "_id": "640f895d4845da25c6738ee3",
+          "idUser": 1,
+          "username": "usuariotest",
+          "gender": 1,
+          "name": "new admin name",
+          "lastName": "admin last name",
+          "email": "adming@admin.com"
+        }
+      },
+      {
+        "_id": "640f4baa4845da25c6738ee1",
+        "idComment": 2,
+        "userId": 1,
+        "comment": "Comentario de respuesta hijo",
+        "numberLikes": 7,
+        "numberDislikes": 3,
+        "timeComment": "2023-03-13T16:13:30.957Z",
+        "childComments": [],
+        "Usuario": {
+          "_id": "640f895d4845da25c6738ee3",
+          "idUser": 1,
+          "username": "usuariotest",
+          "gender": 1,
+          "name": "new admin name",
+          "lastName": "admin last name",
+          "email": "adming@admin.com"
+        }
       }
     ]
-  },
-  {
-    idComment: 4,
-    userId: 2,
-    comment: "Comentario padre",
-    numberLikes: 7,
-    numberDislikes: 3,
-    timeComment: new Date(),
-    childComments: [
-      {
-        idComment: 5,
-        userId: 2,
-        comment: "Comentario hijo",
-        numberLikes: 2,
-        numberDislikes: 3,
-        timeComment: new Date(),
-        childComments: [
-          {
-            idComment: 7,
-            userId: 2,
-            comment: "Comentario de respuesta hijo hijo",
-            numberLikes: 4,
-            numberDislikes: 3,
-            timeComment: new Date(),
-            childComments: [
-              {
-                idComment: 8,
-                userId: 2,
-                comment: "Comentario de respuesta hijo hijo hijo",
-                numberLikes: 33,
-                numberDislikes: 3,
-                timeComment: new Date(),
-                childComments: []
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    idComment: 6,
-    userId: 2,
-    comment: "Comentario de respuesta padre",
-    numberLikes: 7,
-    numberDislikes: 3,
-    timeComment: new Date(),
-    childComments: []
   }
 ];
 

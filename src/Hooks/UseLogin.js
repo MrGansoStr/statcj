@@ -25,7 +25,8 @@ const UseLogin = () => {
     e.preventDefault();
     console.log(username, password);
     dispatch(createUser(UserModelLogged));
-    navigate('/')
+    navigate('/');
+    window.location.reload()
   }
 
   return { username, password, SetUser, SetPass, SubmitForm };
