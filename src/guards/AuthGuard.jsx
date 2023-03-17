@@ -19,6 +19,6 @@ const AuthGuard = ({ IsPrivate }) => {
     (
       PublicFragment
     )
-}
+};
 
 export default AuthGuard;

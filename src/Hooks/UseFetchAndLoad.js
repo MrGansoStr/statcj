@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
-import axios from 'axios';
 
 const UseFetchAndLoad = () => {
-  
   const [loading, setLoading] = useState(false);
-  let controller = new AbortController;
-  const signal = controller.signal;
-
-  const CallEndpoint = async (url = "") => {
+  let controller = AbortController;
+  const CallEndpoint = async (AxiosCall) => {
+    if(AxiosCall.controller) controller = AxiosCall.controller;
     setLoading(true);
     let result = {};
     try {
-      result = await axios.get('https://statcj-api-rest.vercel.app/api/getcomments', { signal: signal }, controller);
+      result = await AxiosCall.CallEndpoint;
     } catch (error) {
       setLoading(false);
       throw error;

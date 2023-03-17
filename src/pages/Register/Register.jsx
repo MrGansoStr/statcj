@@ -1,15 +1,24 @@
 import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, InputLabel, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
 import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UseRegister from "../../Hooks/UseRegister";
-import { PublicRoutes } from "../../models/routes";
+import { PrivateRoutes, PublicRoutes } from "../../models/routes";
 import StyledErrorInput from "../../StyledComponents/StyledErrorInput/StyledErrorInput";
 import { GenderModel } from './../../models/InitialUser';
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function Register() {
 
   const { acceptTerms, showError, gender, ChangeGender, HideError, ChangeUsername, ChangePassword, ChangeEmail, ChangeNames, ChangeLastNames, ChangeAcceptTerms, RegisterUser, ChangeSamePassword } = UseRegister();
-
+  const userState = useSelector(store => store.user);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(Object.keys(userState).length > 1){
+      navigate(`/${PrivateRoutes.PRIVATE}`)
+    }
+    return () => {}
+  },[]);
   return (
     <Box component="div" className="container-lg d-flex align-items-center justify-content-center">
       <Box component={Paper} className=" p-3 m-0 m-auto mt-5 mb-5 w-75" sx={{ maxWidth: 500 }}>

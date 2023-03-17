@@ -9,7 +9,7 @@ export const useAsync = (
   useEffect(() => {
     let isActive = true;
     asyncFunction().then((result) => {
-      if (isActive) successFunction(result.data);
+      if (isActive) successFunction(result?.data);
     });
     return () => {
       returnFunction && returnFunction();

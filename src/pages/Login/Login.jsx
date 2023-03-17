@@ -1,11 +1,22 @@
 import { Box, Button, Checkbox, FormControl, FormGroup, Paper, TextField, Typography } from "@mui/material";
 import LockOpenIcon from '@mui/icons-material/LockOpen';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UseLogin from "../../Hooks/UseLogin";
-import { PublicRoutes } from "../../models/routes";
+import { PrivateRoutes, PublicRoutes } from "../../models/routes";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+
 
 function Login() {
   const { username, password, SetUser, SetPass, SubmitForm } = UseLogin();
+  const userState = useSelector(store => store.user);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(Object.keys(userState).length > 1){
+      navigate(`/${PrivateRoutes.PRIVATE}`)
+    }
+    return () => {}
+  },[]);
   return (
     <Box component="div" className="container-lg d-flex align-items-center justify-content-center">
       <Box component={Paper} className="p-3 m-0 m-auto mt-5 mb-5 w-75" sx={{ maxWidth: 500 }}>

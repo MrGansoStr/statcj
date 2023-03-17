@@ -15,8 +15,7 @@ function Header() {
   const userState = useSelector(store => store.user);
   const [isLogged, setIsLogged] = useState(false);
   useEffect(() => {
-    
-    if (userState.username) {
+    if (userState.username || Object.keys(userState).length >1) {
       setIsLogged(true);
     }
     else if(userState.idUser === 0){
@@ -24,7 +23,6 @@ function Header() {
     }
     return () => { }
   }, [userState]);
-  
   
   return (
     <>

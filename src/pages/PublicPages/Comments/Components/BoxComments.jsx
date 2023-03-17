@@ -2,6 +2,7 @@ import { Box, Button, FormControl, FormGroup, TextField, Typography } from "@mui
 import { useEffect, useState } from "react";
 import UseComment from "../../../../Hooks/UseComment";
 import UseFetchAndLoad from "../../../../Hooks/UseFetchAndLoad";
+import { GetCommentsAPI } from "../../../../services/public.service";
 import StyledErrorInput from "../../../../StyledComponents/StyledErrorInput/StyledErrorInput";
 import { useAsync } from './../../../../Hooks/UseAsync';
 import { CommentsModelMain } from './../../../../models/CommentsModel';
@@ -11,9 +12,9 @@ import Comment from "./Comment";
 function BoxComments({ ArrayComments = [] }) {
   const { loading, CallEndpoint } = UseFetchAndLoad();
   const { showError, HideError, MakeComment } = UseComment();
-    const [data, setData] = useState(null);
-    const getApiData = async () => await CallEndpoint();
-    useAsync(getApiData, (a) => setData(a.data), () => { });
+  const [data, setData] = useState(null);
+  const getApiData = async () => await CallEndpoint(GetCommentsAPI());
+  useAsync(getApiData, (a) => setData(a.data), () => { });
   //let listComments = data;
   useEffect(() => {
     console.log("rendered");

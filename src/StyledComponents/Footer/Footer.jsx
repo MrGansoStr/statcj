@@ -5,6 +5,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TermsAndConditions from "./Components/TermsAndConditions";
 import { PublicRoutes } from "../../models/routes";
 import { Link } from "react-router-dom";
+import { Link as MUILink} from "@mui/material"
 
 function Footer() {
   return (
@@ -59,7 +60,7 @@ function Footer() {
         }
         <Grid item xs={4} className="boder p-2 w-25">
           <Typography component="div" variant="inherit" className="d-flex align-items-start justify-content-start p-2">
-            <Link to={PublicRoutes.COMMENTS}>Comentarios y Discuciones</Link>
+            <MUILink underline="hover" color="inherit" href={PublicRoutes.COMMENTS} style={{color: "#0d6efd"}}>Comentarios y Discuciones</MUILink>
           </Typography>
           <Typography component="div" variant="inherit" className="d-flex align-items-start justify-content-start p-2">
             Ayuda
