@@ -5,8 +5,8 @@ const SubmitData = async (AxiosCall = () => Promise ) => {
     //console.log("El resultado desde SubmitForm", result);
     return result;
   } catch (error) {
-    
-    throw error;
+    console.error(error)
+    return;
   }
 }
 export default SubmitData;

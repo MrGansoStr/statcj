@@ -13,7 +13,7 @@ import { UseContextSymbols } from '../ContextSearchSymbols';
 import { useEffect } from 'react';
 import { Slide } from '@mui/material';
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+export const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
     padding: theme.spacing(2),
   },
@@ -22,7 +22,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-function BootstrapDialogTitle(props) {
+export function BootstrapDialogTitle(props) {
   const { children, onClose, ...other } = props;
 
   return (
@@ -46,7 +46,7 @@ function BootstrapDialogTitle(props) {
   );
 }
 
-const Transition = React.forwardRef(function Transition(props, ref) {
+export const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="down" ref={ref} {...props} />;
 });
 
@@ -62,12 +62,12 @@ const InfoBlank = {
 }
 
 export default function CustomizedDialogs() {
-  let {openInfo, setOpenInfo, idSymbol, InfoSymbol} = UseContextSymbols();
+  let { openInfo, setOpenInfo, idSymbol, InfoSymbol } = UseContextSymbols();
   const [TheInfoSymbol, setTheInfoSymbol] = React.useState(InfoBlank);
 
   useEffect(() => {
     setTheInfoSymbol(InfoSymbol);
-    return () => {}
+    return () => { }
   }, [InfoSymbol]);
 
   const handleClose = () => {
@@ -83,9 +83,9 @@ export default function CustomizedDialogs() {
         TransitionComponent={Transition}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-        <Typography variant="overline" className="fs-4">
-          {TheInfoSymbol?.name}
-        </Typography>
+          <Typography variant="overline" className="fs-4">
+            {TheInfoSymbol?.name}
+          </Typography>
         </BootstrapDialogTitle>
         <DialogContent dividers>
           <Typography component="div" gutterBottom>

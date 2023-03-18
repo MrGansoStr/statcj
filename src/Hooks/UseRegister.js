@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { RegisterAPI } from "../services/public.service";
 import { ValidateEmail } from "../utilities/ValidateEmail";
 import { GenderModel } from './../models/InitialUser';
+import SubmitData from './../utilities/SubmitData';
+import { PublicRoutes } from './../models/routes';
 
 const UseRegister = () => {
   const [username, setUsername] = useState("");
@@ -12,6 +16,8 @@ const UseRegister = () => {
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [showError, setShowError] = useState(false);
   const [gender, setGender] = useState(GenderModel.default);
+
+  const navigate = useNavigate();
 
   const ChangeUsername = (e) => {
     e.preventDefault();
@@ -57,7 +63,7 @@ const UseRegister = () => {
     setShowError(false)
   }
 
-  const RegisterUser = (e) => {
+  const RegisterUser = async (e) => {
     e.preventDefault();
     if(password != samepassword) {
       setShowError(true);
@@ -80,8 +86,15 @@ const UseRegister = () => {
       return;
     }
     else {
-      console.log(username, password, email, names, lastNames);
-      return;
+      console.log(username, password, email, names, lastNames, gender);
+      try {
+        // idUser: 0 in the database is automatic modified with an autincrement number
+        await SubmitData(RegisterAPI({idUser: 0, username: username, password: password, email: email, name: names, lastName: lastNames, gender: gender}));
+        navigate(`/${PublicRoutes.LOGIN}`)
+      } catch (error) {
+        console.log(error);
+        return;
+      }
     }
   }
 

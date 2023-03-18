@@ -4,5 +4,6 @@
 
 export const LSKeys = {
   TOKEN: "tokentest",
-  USER: "user"
+  USER: "user",
+  TOKENRECOVERY: "tokenrecovery"
 }
