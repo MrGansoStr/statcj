@@ -99,11 +99,11 @@ const UseComment = () => {
         let CommentModel = {idToAnswer: infoCommentToAnswer?.idComment, ...DefaultCommentModel};
         CommentModel.userId = userState?.idUser;
         CommentModel.comment = actionComment;
-        console.log(CommentModel);
-
+        //console.log(CommentModel);
         let result = await SubmitData(AnswerCommentAPI(CommentModel));
-
-        console.log(result);
+        if(result){
+          window.location.reload();
+        }
         return;
       } catch (error) {
         console.error(error);
@@ -121,14 +121,16 @@ const UseComment = () => {
       return;
     }
     else{
-      console.log(infoCommentToEdit?.idComment);
-      console.log("Edit comment", actionComment);
+      //console.log(infoCommentToEdit?.idComment);
+      //console.log("Edit comment", actionComment);
       try {
         let result = await SubmitData(EditCommentAPI({
           idComment: infoCommentToEdit.idComment,
           newComment: actionComment
         }));
-        return;
+        if(result){
+          window.location.reload();
+        }
       } catch (error) {
         console.error(error);
         return; 
