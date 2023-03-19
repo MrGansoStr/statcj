@@ -5,8 +5,9 @@ import Collapse from '@mui/material/Collapse';
 import Button from '@mui/material/Button';
 import CloseIcon from '@mui/icons-material/Close';
 import { AlertTitle, Typography } from '@mui/material';
+import { DefaultMessageError } from '../../models/GenericMessageError';
 
-function StyledErrorInput({show, HideError}) {
+function StyledErrorInput({show, HideError, Message = DefaultMessageError}) {
 
   return (
     <Box component="div" className="d-flex align-items-center justify-content-center">
@@ -27,8 +28,7 @@ function StyledErrorInput({show, HideError}) {
           sx={{ mb: 2 }}
         >
           <AlertTitle>Error</AlertTitle>
-          <Typography className="fw-bold" variant="inherit">Los datos no están correctamente ingresados. </Typography>
-          <Typography className="fw-bold" variant="inherit">Por favor, Reviselos e inténtelo de nuevo.</Typography>
+          <Typography className="fw-bold" variant="inherit">{ Message }</Typography>
         </Alert>
       </Collapse>
     </Box>

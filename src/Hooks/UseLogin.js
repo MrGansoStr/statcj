@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { LoginAPI } from "../services/public.service";
 import SubmitData from "../utilities/SubmitData";
 import { PrivateRoutes } from "../models/routes";
+import { InsertLocalStorageValueNormal } from "../utilities/ManageLocalStorage";
+import { LSKeys } from "../models/LocalStorageKeys";
 
 
 const UseLogin = () => {
@@ -30,6 +32,7 @@ const UseLogin = () => {
     try {
       let { data } = await SubmitData(LoginAPI({username: username, password: password}));
       dispatch(createUser(data?.InfoUser));
+      InsertLocalStorageValueNormal(LSKeys.TOKEN, data.AccessToken);
       navigate(`/${PrivateRoutes.PRIVATE}`);
     } catch (error) {
       throw error;

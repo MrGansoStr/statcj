@@ -1,4 +1,9 @@
 import { useState } from 'react';
+import { AnswerCommentAPI, DeleteCommentAPI, EditCommentAPI, MakeCommentAPI } from '../services/private.service';
+import { useSelector } from 'react-redux';
+import SubmitData from './../utilities/SubmitData';
+import { DefaultCommentModel } from '../models/CommentsModel';
+import { DefaultEmptyComment, DefaultNotLoggedError } from '../models/GenericMessageError';
 
 const UseComment = () => {
   const [comment, setComment] = useState("");
@@ -6,6 +11,9 @@ const UseComment = () => {
   const [showAction, setShowAction] = useState(false);
   const [typeAction, setTypeAction] = useState("answer");
   const [actionComment, setActionComment] = useState("");
+  const [msgError, setMsgError] = useState(null);
+
+  const userState = useSelector(store => store.user);
 
   const ChangeComment = (e) => {
     e.preventDefault();
@@ -29,52 +37,118 @@ const UseComment = () => {
 
   const ChangeShowAction = (e, type) => {
     e.preventDefault();
-    if(type === "answer") {
+    if (type === "answer") {
       setTypeAction("answer");
       setShowAction(true);
       return;
     }
-    else {
+    if (type === "edit") {
       setTypeAction("edit");
       setShowAction(true);
-    }
-  }
-
-  const MakeComment = (e) => {
-    e.preventDefault();
-    if(comment.length === 0) {
-      setShowError(true)
-      console.log("Hay un Error en el comentario");
-      return
-    }
-    else {
-      console.log("Comentario Registrado");
       return;
     }
+    return;
   }
 
-  const MakeAnswer = (e, infoCommentToAnswer, comment) => {
+  const MakeComment = async (e) => {
     e.preventDefault();
-    if(comment.length === 0){
+    if (comment.length === 0) {
+      setMsgError(DefaultEmptyComment);
+      setShowError(true);
+      //console.log(comment);
+      console.log("Hay un Error en el comentario");
+      return;
+    }
+    else {
+      if(Object.keys(userState).length <= 1) {
+        setMsgError(DefaultNotLoggedError);
+        setShowError(true);
+        return;
+      }
+      try {
+        let CommentModel = DefaultCommentModel;
+        CommentModel.userId = userState?.idUser;
+        CommentModel.comment = comment;
+        let result = await SubmitData(MakeCommentAPI(CommentModel));
+        console.log(result);
+        return;
+      } catch (error) {
+        console.error(error);
+        return;
+      }
+    }
+  }
+
+  const MakeAnswer = async (e, infoCommentToAnswer, comment) => {
+    e.preventDefault();
+    if (comment.length === 0 || actionComment.length === 0) {
+      setMsgError(DefaultEmptyComment);
       setShowError(true);
       console.log("La respuesta está vacia")
       return;
     }
-    console.log(infoCommentToAnswer?.idComment);
-    console.log("Make Answer s", actionComment);
+    else{
+      if(Object.keys(userState).length <= 1) {
+        setMsgError(DefaultNotLoggedError);
+        setShowError(true);
+        return;
+      }
+      console.log(infoCommentToAnswer?.idComment);
+      console.log("Make Answer", actionComment);
+      try {
+        let CommentModel = {idToAnswer: infoCommentToAnswer?.idComment, ...DefaultCommentModel};
+        CommentModel.userId = userState?.idUser;
+        CommentModel.comment = actionComment;
+        console.log(CommentModel);
+
+        let result = await SubmitData(AnswerCommentAPI(CommentModel));
+
+        console.log(result);
+        return;
+      } catch (error) {
+        console.error(error);
+        return;
+      }
+    }
   }
 
-  const EditComment = (e, infoCommentToAnswer, comment) => {
+  const EditComment = async (e, infoCommentToEdit, comment) => {
     e.preventDefault();
-    if(comment.length === 0){
+    console.log(comment);
+    if (comment.length === 0 || actionComment.length === 0) {
       setShowError(true);
       console.log("El edit no debe estar vacio");
       return;
     }
-    console.log(infoCommentToAnswer?.idComment);
-    console.log("Edit comment", actionComment);
+    else{
+      console.log(infoCommentToEdit?.idComment);
+      console.log("Edit comment", actionComment);
+      try {
+        let result = await SubmitData(EditCommentAPI({
+          idComment: infoCommentToEdit.idComment,
+          newComment: actionComment
+        }));
+        return;
+      } catch (error) {
+        console.error(error);
+        return; 
+      }
+    }
   }
-  
-  return {showError,typeAction, showAction, actionComment, ChangeActionComment, ChangeShowAction, HideShowAction, EditComment, MakeAnswer,ChangeComment, MakeComment, HideError};
+  const DeleteComment = async (e, InfoComment) => {
+    e.preventDefault();
+    try {
+      let result = await SubmitData(DeleteCommentAPI({
+        idComment: InfoComment.idComment,
+        userId: userState.idUser
+      }));
+      console.log(result);
+      return;
+    } catch (error) {
+      console.error(error);
+      return;
+    }
+  }
+  return { showError, typeAction, showAction, actionComment, msgError, DeleteComment, ChangeActionComment, ChangeShowAction, HideShowAction, EditComment, MakeAnswer, ChangeComment, MakeComment, HideError };
 }
 export default UseComment;

@@ -64,7 +64,15 @@ export const CommentsModelMain = [
   }
 ];
 
-
+export const DefaultCommentModel = {
+  idComment: 0,
+  userId: 0,
+  comment: "",
+  numberLikes: 0,
+  numberDislikes: 0,
+  timeComment: new Date(),
+  childComments: []
+}
 
 export const CommentModel1 = {
   idComment: 2,

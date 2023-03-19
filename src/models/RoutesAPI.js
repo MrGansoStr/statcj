@@ -10,5 +10,9 @@ export const PublicEndpoints = {
 }
 
 export const PrivateEndpoints = {
-  RECOVERYACCOUNT: "recoveryaccount"
+  RECOVERYACCOUNT: "recoveryaccount",
+  EDITCOMMENT: "editcomment",
+  MAKECOMMENT: "makecomment",
+  ANSWERCOMMENT: "answercomment",
+  DELETECOMMENT: "deletecomment"
 }

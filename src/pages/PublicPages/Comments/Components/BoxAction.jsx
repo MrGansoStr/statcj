@@ -7,7 +7,7 @@ import UseComment from './../../../../Hooks/UseComment';
 import { Button, FormControl, FormGroup, TextField } from '@mui/material';
 
 function BoxAction({ showAction = false, HideAction, TypeAction = "answer", InfoComment}) {
-  const { showError, actionComment, ChangeActionComment, HideError, EditComment, MakeAnswer } = UseComment();
+  const { showError, actionComment, msgError, ChangeActionComment, HideError, EditComment, MakeAnswer } = UseComment();
   return (
     <Collapse in={showAction}>
       <form>
@@ -20,7 +20,7 @@ function BoxAction({ showAction = false, HideAction, TypeAction = "answer", Info
             onChange={ChangeActionComment}
           />
           {
-            showError ? <Box component="div" className="p-3"><StyledErrorInput show={showError} HideError={HideError} /></Box> : null
+            showError ? <Box component="div" className="p-3"><StyledErrorInput show={showError} HideError={HideError} Message={msgError}/></Box> : null
           }
           <FormControl className="p-3 align-items-end">
             {TypeAction === "edit" ? (

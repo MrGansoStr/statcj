@@ -13,16 +13,18 @@ export const AxiosInterceptor = () => {
     return request;
   }
   const updateHeaders = (request) => {
+    const tokenJWT = GetLocalStorage(LSKeys.TOKEN);
     const newHeader = {
-      Authorization: `Bearer ${tokenRecovery}`
+      Authorization: `Bearer ${tokenJWT}`
     }
     request.headers = newHeader;
     return request;
   }
 
   axios.interceptors.request.use(request => {
-    if (request?.url?.includes("private-api/recoveryaccount")) return updateHeaderRecovery(request);
-    return request;
+    if (request?.url?.includes("/recoveryaccount")) return updateHeaderRecovery(request);
+    if(request?.url?.includes("/private-api")) return updateHeaders(request);
+    else if(request?.url?.includes("public-api")) return request;
   });
 
   axios.interceptors.response.use(response => {

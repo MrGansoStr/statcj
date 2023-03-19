@@ -1,24 +1,23 @@
 import { Typography, Box, Paper, Button } from '@mui/material';
-import { useState } from 'react';
-import { UserModelInComment } from '../../../../models/InitialUser';
 import UseComment from './../../../../Hooks/UseComment';
 import { useTheme } from '@mui/material';
 import BoxAction from './BoxAction';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
+import GetGender from '../Utilities/GetGender';
+import { IsEditable } from '../Utilities/CanEdit';
 
-function Comment({ InfoComment, showMore = false }) {
-
-  const [infoUser, setInfoUser] = useState(UserModelInComment);
+function Comment({ InfoComment, isLogged = false, idUserLogged }) {
   let date = new Date(Date.parse(InfoComment?.timeComment)).toLocaleDateString();
   let hours = new Date(Date.parse(InfoComment?.timeComment)).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
   const theme = useTheme();
-  const { showAction, typeAction, HideShowAction, ChangeShowAction } = UseComment();
+  const { showAction, typeAction, DeleteComment, HideShowAction, ChangeShowAction } = UseComment();
   return (
     <Box component="div" className="mx-3 mt-2 p-3 border rounded-2">
       {InfoComment?.idComment}
-      <Typography variant="h6">
-        {infoUser.name}
+      <Typography component="div" variant="body1" className="fs-bold">
+        {GetGender(InfoComment?.Usuario?.gender)}{InfoComment?.Usuario?.name} {InfoComment?.Usuario?.lastName}
       </Typography>
       <Typography component="div" variant="body1" className="p-2">
         {InfoComment?.comment}&nbsp;
@@ -29,7 +28,14 @@ function Comment({ InfoComment, showMore = false }) {
       {
         <Box component="div" className="d-flex alig-items-end justify-content-end p-2">
           <a onClick={event => ChangeShowAction(event, "answer")} type="button" style={{ color: theme.palette.text.secondary }}>Responder</a>&nbsp;&nbsp;
-          <a onClick={event => ChangeShowAction(event, "edit")} type="button" style={{ color: theme.palette.text.secondary }}>Editar</a>
+          {
+            isLogged && IsEditable(idUserLogged, InfoComment?.userId) ? (
+              <>
+                <a onClick={event => ChangeShowAction(event, "edit")} type="button" style={{ color: theme.palette.info.main }}>Editar</a>&nbsp;
+                <a onClick={event => DeleteComment(event, InfoComment)} type="button" style={{color: theme.palette.error.main}}>Eliminar</a>
+              </>
+            ) : null
+          }
         </Box>
       }
       {
@@ -37,7 +43,7 @@ function Comment({ InfoComment, showMore = false }) {
       }
       {
         InfoComment?.Comments?.map((e, index) => (
-          <Comment key={index} InfoComment={e} />
+          <Comment key={index} InfoComment={e} isLogged={isLogged} idUserLogged={idUserLogged} />
         ))
       }
       {
