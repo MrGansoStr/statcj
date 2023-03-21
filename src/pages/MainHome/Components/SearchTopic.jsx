@@ -50,11 +50,11 @@ function SearchTopic() {
             {
               topic.length === 0 ? (
                 <ListItemButton className="text-center align-items-center justify-content-center" onClick={event => GoToTopic(event, "variance")}>Varianza</ListItemButton>
-              ) : FilteredTopics.map((element, index) => (
+              ) : FilteredTopics.length === 0 ? <ListItemButton className="text-center">No encontrado</ListItemButton> : (FilteredTopics.map((element, index) => (
                 <ListItemButton key={index} onClick={event => GoToTopic(event, element.url)} className="text-center align-items-center justify-content-center">
                   {element.name}
                 </ListItemButton>
-              ))
+              )))
             }
           </List>
         </Paper>

@@ -1,6 +1,6 @@
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { Box, IconButton, Menu, MenuItem, Tooltip, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteUser } from '../../redux/states/user';
 import { useNavigate } from 'react-router-dom';
@@ -21,6 +21,7 @@ function UserLogged() {
   const LogOut = (e) => {
     e.preventDefault();
     dispatcher(deleteUser());
+    ClearLocalStorageValue(LSKeys.TOKEN);
     navigate(PublicRoutes.LOGIN);
     window.location.reload();
   }

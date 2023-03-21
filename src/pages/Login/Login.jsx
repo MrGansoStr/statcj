@@ -3,17 +3,25 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { Link, useNavigate } from "react-router-dom";
 import UseLogin from "../../Hooks/UseLogin";
 import { PrivateRoutes, PublicRoutes } from "../../models/routes";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { ClearLocalStorageValue } from "../../utilities/ManageLocalStorage";
+import { LSKeys } from "../../models/LocalStorageKeys";
+import { deleteUser } from "../../redux/states/user";
 
 
 function Login() {
-  const { username, password, SetUser, SetPass, SubmitForm } = UseLogin();
+  const { SetUser, SetPass, SubmitForm } = UseLogin();
   const userState = useSelector(store => store.user);
   const navigate = useNavigate();
+  const dispatcher = useDispatch();
   useEffect(() => {
     if(Object.keys(userState).length > 1){
       navigate(`/${PrivateRoutes.PRIVATE}`)
+    }
+    else{
+      dispatcher(deleteUser());
+      ClearLocalStorageValue(LSKeys.TOKEN);
     }
     return () => {}
   },[]);
