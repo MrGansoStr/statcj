@@ -1,29 +1,15 @@
-import { AppBar, Box, Grid, Typography, useTheme } from "@mui/material";
+import { AppBar, Box, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import '../CSS/Styled.css'
 import { PublicRoutes } from "../../models/routes";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 import UserLogged from "../UserLogged/UserLogged";
+import { UserIsLogged } from "../../utilities/UserIsLogged";
 
 
 function Header() {
-  const theme = useTheme();
-
-  const userState = useSelector(store => store.user);
-  const [isLogged, setIsLogged] = useState(false);
-  useEffect(() => {
-    if (userState.username || Object.keys(userState).length >1) {
-      setIsLogged(true);
-    }
-    else if(userState.idUser === 0){
-      setIsLogged(false);
-    }
-    return () => { }
-  }, [userState]);
-  
+  const { isLogged } = UserIsLogged();
   return (
     <>
       <Box className="static-view-header" >

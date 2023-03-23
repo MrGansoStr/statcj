@@ -34,6 +34,7 @@ const UseLogin = () => {
       dispatch(createUser(data?.InfoUser));
       InsertLocalStorageValueNormal(LSKeys.TOKEN, data.AccessToken);
       navigate(`/${PrivateRoutes.PRIVATE}`);
+      window.location.reload();
     } catch (error) {
       throw error;
     }
