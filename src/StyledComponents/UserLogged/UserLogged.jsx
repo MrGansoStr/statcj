@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom';
 import { PrivateRoutes, PublicRoutes } from './../../models/routes';
 import { ClearLocalStorageValue } from '../../utilities/ManageLocalStorage';
 import { LSKeys } from '../../models/LocalStorageKeys';
+import LogoutIcon from '@mui/icons-material/Logout';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import CommentIcon from '@mui/icons-material/Comment';
 
 function UserLogged() {
 
@@ -62,13 +65,13 @@ function UserLogged() {
           Ha iniciado sesión como: <b>{userState?.username}</b>
         </Typography>
         <MenuItem onClick={GoToProfile}>
-          <Typography textAlign="center">Perfil</Typography>
+          <Typography textAlign="center"><AccountCircleIcon color="primary"/> Perfil</Typography>
         </MenuItem>
         <MenuItem onClick={CloseUserMenu}>
-          <Typography textAlign="center">Mis Comentarios</Typography>
+          <Typography textAlign="center"><CommentIcon color="info"/> Mis Comentarios</Typography>
         </MenuItem>
         <MenuItem onClick={LogOut}>
-          <Typography textAlign="center">Salir</Typography>
+          <Typography textAlign="center"><LogoutIcon color="error"/> Salir</Typography>
         </MenuItem>
 
       </Menu>
