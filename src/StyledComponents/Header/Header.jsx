@@ -57,11 +57,11 @@ function Header() {
                       <Typography variant="overline">Calculadoras</Typography>
                     </Link>
                   </Box>
-                  <Box component="li" className="nav-item">
+                  {/* <Box component="li" className="nav-item">
                     <Link className="nav-link update-view-link-header" to="/">
                       <Typography variant="overline">Muestreos</Typography>
                     </Link>
-                  </Box>
+                  </Box> */}
                   {
                     /*
                   <Box component="li" className="nav-item">
