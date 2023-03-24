@@ -12,6 +12,7 @@ const UseComment = () => {
   const [typeAction, setTypeAction] = useState("answer");
   const [actionComment, setActionComment] = useState("");
   const [msgError, setMsgError] = useState(null);
+  const [ModalDelete, setModalDelete] = useState(false);
 
   const userState = useSelector(store => store.user);
 
@@ -55,7 +56,6 @@ const UseComment = () => {
     if (comment.length === 0) {
       setMsgError(DefaultEmptyComment);
       setShowError(true);
-      //console.log(comment);
       console.log("Hay un Error en el comentario");
       return;
     }
@@ -137,6 +137,15 @@ const UseComment = () => {
       }
     }
   }
+
+  const OpenModalDelete = (e) => {
+    e.preventDefault();
+    setModalDelete(true);
+  }
+
+  const HideModalDelete = () => {
+    setModalDelete(false);
+  }
   const DeleteComment = async (e, InfoComment) => {
     e.preventDefault();
     try {
@@ -144,6 +153,7 @@ const UseComment = () => {
         idComment: InfoComment.idComment,
         userId: userState.idUser
       }));
+      setModalDelete(false);
       console.log(result);
       return;
     } catch (error) {
@@ -151,6 +161,6 @@ const UseComment = () => {
       return;
     }
   }
-  return { showError, typeAction, showAction, actionComment, msgError, DeleteComment, ChangeActionComment, ChangeShowAction, HideShowAction, EditComment, MakeAnswer, ChangeComment, MakeComment, HideError };
+  return { showError, typeAction, showAction, actionComment, msgError, ModalDelete, HideModalDelete, OpenModalDelete, DeleteComment, ChangeActionComment, ChangeShowAction, HideShowAction, EditComment, MakeAnswer, ChangeComment, MakeComment, HideError };
 }
 export default UseComment;
