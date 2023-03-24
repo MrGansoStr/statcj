@@ -7,8 +7,10 @@ This project contains calculators, topics, form the statistics, and distribution
 > npm i
 
 ## Run code
-Mode Develop:
+Developer Mode:
  > npm run dev
+
+Normal Mode:
  > npm start
 
 ## Build
