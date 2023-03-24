@@ -5,7 +5,6 @@ This project contains calculators, topics, form the statistics, and distribution
 # Install dependencies
 > npm install  
 > npm i
-> npm ci
 
 ## Run code
 Mode Develop:
