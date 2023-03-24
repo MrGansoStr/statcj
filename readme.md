@@ -4,15 +4,12 @@ This project contains calculators, topics, form the statistics, and distribution
 
 # Install dependencies
 > npm install  
-or:
 > npm i
-or:
 > npm ci
 
 ## Run code
 Mode Develop:
  > npm run dev
-Or:
  > npm start
 
 ## Build
