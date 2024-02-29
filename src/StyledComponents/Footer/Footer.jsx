@@ -60,12 +60,15 @@ function Footer() {
         </Grid>
       </Box>
       <hr />
+      {/*
       <Box className="container">
         <Typography component="div" variant="h3">Donaciones: </Typography>
+        
         <Box className="d-flex align-items-center justify-content-center">
           <img className="img-fluid rounded-3" src="/images/yape.jpg" style={{ maxWidth: "300px" }} />
         </Box>
       </Box>
+      */}
       <hr />
       <Grid container direction="row" spacing={4} justifyContent="space-evenly" alignItems="stretch" className=" mt-0 py-3 mb-3">
         {
