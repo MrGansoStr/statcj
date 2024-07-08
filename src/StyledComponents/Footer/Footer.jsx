@@ -79,7 +79,7 @@ function Footer() {
         }
         <Grid item xs={4} className="boder p-2 w-25">
           <Typography component="div" variant="inherit" className="d-flex align-items-start justify-content-start p-2">
-            <MUILink underline="hover" color="inherit" href={PublicRoutes.COMMENTS} style={{ color: "#0d6efd" }}>Comentarios y Discuciones</MUILink>
+            <MUILink underline="hover" color="inherit" href={PublicRoutes.COMMENTS} style={{ color: "#0d6efd" }}>Comentarios y Discusiones</MUILink>
           </Typography>
           <Typography component="div" variant="inherit" className="d-flex align-items-start justify-content-start p-2">
             Ayuda
