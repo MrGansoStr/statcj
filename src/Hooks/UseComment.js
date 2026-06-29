@@ -72,7 +72,7 @@ const UseComment = () => {
         return;
       }
       try {
-        let CommentModel = DefaultCommentModel;
+        const CommentModel = DefaultCommentModel;
         CommentModel.userId = userState?.idUser;
         CommentModel.comment = comment;
         await SubmitData(MakeCommentAPI(CommentModel));
@@ -96,7 +96,7 @@ const UseComment = () => {
         return;
       }
       try {
-        let CommentModel = {
+        const CommentModel = {
           idToAnswer: infoCommentToAnswer?.idComment,
           ...DefaultCommentModel,
         };
@@ -146,7 +146,7 @@ const UseComment = () => {
   const DeleteComment = async (e, InfoComment) => {
     e.preventDefault();
     try {
-      const result = await SubmitData(
+      await SubmitData(
         DeleteCommentAPI({
           idComment: InfoComment.idComment,
           userId: userState.idUser,
