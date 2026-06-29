@@ -1,6 +1,6 @@
 export const ThereErrors = (line, type = "alpha") => {
   if (type === "alpha") {
-    let isValid = line.match(/\d+?/g);
+    const isValid = line.match(/\d+?/g);
     if (line.length === 0) {
       return true;
     }
