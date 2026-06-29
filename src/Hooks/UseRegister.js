@@ -95,7 +95,7 @@ const UseRegister = () => {
           }),
         );
         navigate(`/${PublicRoutes.LOGIN}`);
-      } catch (error) {
+      } catch {
         return;
       }
     }
