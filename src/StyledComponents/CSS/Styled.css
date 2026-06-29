@@ -28,7 +28,6 @@
 
 .static-view-header {
   position: sticky;
-  position: -webkit-sticky;
   z-index: 5;
   top: 0;
 }
