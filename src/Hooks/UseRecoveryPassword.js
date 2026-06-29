@@ -67,7 +67,7 @@ const UseRecoveryPassword = () => {
       password === passwordSame
     ) {
       try {
-        let result = await SubmitData(
+        const result = await SubmitData(
           RecoveryPasswordAPI({ username: userToRecovery, password: password }),
         );
         if (result) {
