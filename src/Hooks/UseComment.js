@@ -75,9 +75,9 @@ const UseComment = () => {
         let CommentModel = DefaultCommentModel;
         CommentModel.userId = userState?.idUser;
         CommentModel.comment = comment;
-        let result = await SubmitData(MakeCommentAPI(CommentModel));
+        await SubmitData(MakeCommentAPI(CommentModel));
         return;
-      } catch (error) {
+      } catch {
         return;
       }
     }
@@ -102,12 +102,12 @@ const UseComment = () => {
         };
         CommentModel.userId = userState?.idUser;
         CommentModel.comment = actionComment;
-        let result = await SubmitData(AnswerCommentAPI(CommentModel));
+        const result = await SubmitData(AnswerCommentAPI(CommentModel));
         if (result) {
           window.location.reload();
         }
         return;
-      } catch (error) {
+      } catch {
         return;
       }
     }
@@ -120,7 +120,7 @@ const UseComment = () => {
       return;
     } else {
       try {
-        let result = await SubmitData(
+        const result = await SubmitData(
           EditCommentAPI({
             idComment: infoCommentToEdit.idComment,
             newComment: actionComment,
@@ -129,7 +129,7 @@ const UseComment = () => {
         if (result) {
           window.location.reload();
         }
-      } catch (error) {
+      } catch {
         return;
       }
     }
@@ -146,7 +146,7 @@ const UseComment = () => {
   const DeleteComment = async (e, InfoComment) => {
     e.preventDefault();
     try {
-      let result = await SubmitData(
+      const result = await SubmitData(
         DeleteCommentAPI({
           idComment: InfoComment.idComment,
           userId: userState.idUser,
@@ -154,10 +154,11 @@ const UseComment = () => {
       );
       setModalDelete(false);
       return;
-    } catch (error) {
+    } catch {
       return;
     }
   };
+
   return {
     showError,
     typeAction,
@@ -178,4 +179,5 @@ const UseComment = () => {
     HideError,
   };
 };
+
 export default UseComment;
