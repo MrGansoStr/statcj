@@ -75,7 +75,7 @@ const UseRecoveryPassword = () => {
           navigate(`/${PublicRoutes.LOGIN}`);
         }
         return;
-      } catch (error) {
+      } catch {
         return;
       }
     } else {
@@ -113,4 +113,5 @@ const UseRecoveryPassword = () => {
     RecoveryAccount,
   };
 };
+
 export default UseRecoveryPassword;
