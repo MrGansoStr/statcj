@@ -6,85 +6,85 @@ import { ProcessInput } from "../../../../utilities/ProcessInput";
 import { ThereErrors } from "../../../../utilities/ThereErrors";
 import StyledErrorInput from "../../../../StyledComponents/StyledErrorInput/StyledErrorInput";
 function Variance_Calculator() {
-	const [rawData, setRawData] = useState("");
-	const [calculatedData, setcalculatedData] = useState(null);
-	const [grouped, setGrouped] = useState(false);
-	const [muestral, setMuestral] = useState(false);
-	const [showError, setShowError] = useState(false);
+  const [rawData, setRawData] = useState("");
+  const [calculatedData, setcalculatedData] = useState(null);
+  const [grouped, setGrouped] = useState(false);
+  const [muestral, setMuestral] = useState(false);
+  const [showError, setShowError] = useState(false);
 
-	const HideError = (e) => {
-		setShowError(false);
-	};
+  const HideError = (e) => {
+    setShowError(false);
+  };
 
-	const handleChangeRawData = (e) => {
-		setRawData(e.target.value);
-	};
+  const handleChangeRawData = (e) => {
+    setRawData(e.target.value);
+  };
 
-	const handleChangeGrouped = (e) => {
-		setGrouped(e.target.checked);
-	};
+  const handleChangeGrouped = (e) => {
+    setGrouped(e.target.checked);
+  };
 
-	const handleChangeMuestral = (e) => {
-		setMuestral(e.target.checked);
-	};
+  const handleChangeMuestral = (e) => {
+    setMuestral(e.target.checked);
+  };
 
-	const calculateVarianceAndError = () => {
-		if (ThereErrors(rawData)) {
-			setShowError(true);
-		} else {
-			setcalculatedData(
-				CalculateVarianceAndError(ProcessInput(rawData), grouped, muestral),
-			);
-		}
-	};
-	return (
-		<Stack
-			component="div"
-			spacing={3}
-			className="d-flex align-items-center justify-content-center"
-		>
-			<Typography variant="h5">Varianza y El Error Estándar</Typography>
-			<TextField
-				type="text"
-				id="standard-multiline-flexible"
-				label="Datos"
-				multiline
-				maxRows={15}
-				fullWidth
-				variant="standard"
-				className="w-75"
-				onChange={handleChangeRawData}
-			/>
-			<Box component="span" className="">
-				<Button
-					color="secondary"
-					variant="outlined"
-					onClick={calculateVarianceAndError}
-				>
-					Calcular
-				</Button>
-			</Box>
+  const calculateVarianceAndError = () => {
+    if (ThereErrors(rawData)) {
+      setShowError(true);
+    } else {
+      setcalculatedData(
+        CalculateVarianceAndError(ProcessInput(rawData), grouped, muestral),
+      );
+    }
+  };
+  return (
+    <Stack
+      component="div"
+      spacing={3}
+      className="d-flex align-items-center justify-content-center"
+    >
+      <Typography variant="h5">Varianza y El Error Estándar</Typography>
+      <TextField
+        type="text"
+        id="standard-multiline-flexible"
+        label="Datos"
+        multiline
+        maxRows={15}
+        fullWidth
+        variant="standard"
+        className="w-75"
+        onChange={handleChangeRawData}
+      />
+      <Box component="span" className="">
+        <Button
+          color="secondary"
+          variant="outlined"
+          onClick={calculateVarianceAndError}
+        >
+          Calcular
+        </Button>
+      </Box>
 
-			<HowCalculate
-				grouped={grouped}
-				handleChangeGrouped={handleChangeGrouped}
-				muestral={muestral}
-				handleChangeMuestral={handleChangeMuestral}
-			/>
-			{showError ? (
-				<StyledErrorInput show={showError} HideError={HideError} />
-			) : null}
-			<Box component="div" className="py-4">
-				<Typography component="p" variant="overline" className="fs-6">
-					Varianza:{" "}
-					<b>{calculatedData ? calculatedData.varianza : "No Calculado"}</b>
-				</Typography>
-				<Typography component="p" variant="overline" className="fs-6">
-					Error Estándar:{" "}
-					<b>{calculatedData ? calculatedData.error : "No calculado"}</b>
-				</Typography>
-			</Box>
-		</Stack>
-	);
+      <HowCalculate
+        grouped={grouped}
+        handleChangeGrouped={handleChangeGrouped}
+        muestral={muestral}
+        handleChangeMuestral={handleChangeMuestral}
+      />
+      {showError ? (
+        <StyledErrorInput show={showError} HideError={HideError} />
+      ) : null}
+      <Box component="div" className="py-4">
+        <Typography component="p" variant="overline" className="fs-6">
+          Varianza:{" "}
+          <b>{calculatedData ? calculatedData.varianza : "No Calculado"}</b>
+        </Typography>
+        <Typography component="p" variant="overline" className="fs-6">
+          Error Estándar:{" "}
+          <b>{calculatedData ? calculatedData.error : "No calculado"}</b>
+        </Typography>
+      </Box>
+    </Stack>
+  );
 }
 export default Variance_Calculator;

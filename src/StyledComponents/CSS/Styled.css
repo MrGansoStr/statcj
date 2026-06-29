@@ -1,46 +1,46 @@
 .without-shadow {
-	box-shadow: 0 0 0 0 !important;
+  box-shadow: 0 0 0 0 !important;
 }
 
 /* REDIRECT BOX */
 
 .update-view-link:hover {
-	color: rgb(105, 99, 134);
-	font-size: 2.36rem;
-	transition: linear 0.15s;
+  color: rgb(105, 99, 134);
+  font-size: 2.36rem;
+  transition: linear 0.15s;
 }
 
 /* HEADER */
 
 .color-header li a {
-	color: white !important;
+  color: white !important;
 }
 .color-logo {
-	color: white !important;
+  color: white !important;
 }
 
 .update-view-link-header:hover {
-	font-size: 1.7rem !important;
-	border-bottom: white solid 2px;
-	transition: all linear 0.3s;
-	font-weight: bold !important;
+  font-size: 1.7rem !important;
+  border-bottom: white solid 2px;
+  transition: all linear 0.3s;
+  font-weight: bold !important;
 }
 
 .static-view-header {
-	position: sticky;
-	position: -webkit-sticky;
-	z-index: 5;
-	top: 0;
+  position: sticky;
+  position: -webkit-sticky;
+  z-index: 5;
+  top: 0;
 }
 
 /* FOOTER */
 
 .colors-footer {
-	margin: auto;
+  margin: auto;
 }
 
 .update-view-link-footer:hover {
-	color: white !important;
-	font-size: 1.2rem !important;
-	transition: all linear 0.2s;
+  color: white !important;
+  font-size: 1.2rem !important;
+  transition: all linear 0.2s;
 }

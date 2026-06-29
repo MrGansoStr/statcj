@@ -24,55 +24,55 @@ import { SnackbarManager } from "./utilities/SnackbarManager";
 const Comments = lazy(() => import("./pages/PublicPages/Comments/Comments"));
 
 function App() {
-	return (
-		<div className="App">
-			<ConfigureTheme>
-				<Suspense fallback={<SpinnerFallback />}>
-					<Provider store={UserStore}>
-						<SnackbarProvider autoHideDuration={3500}>
-							<SnackbarManager />
-							<BrowserRouter>
-								<Header />
-								<RoutesNotFound>
-									<Route index element={<MainHome />} />
-									<Route
-										path={`${PublicRoutes.CALCULATOR}/*`}
-										element={<RoutesCalculator />}
-									/>
-									<Route
-										path={`${PublicRoutes.TOPICS}/*`}
-										element={<RoutesTopics />}
-									/>
-									<Route
-										path={`${PublicRoutes.DISTRIBUTION_TABLES}/*`}
-										element={<RoutesDistributions />}
-									/>
-									<Route
-										path={PublicRoutes.SYMBOLS}
-										element={<SearchSymbol />}
-									/>
-									<Route path={PublicRoutes.COMMENTS} element={<Comments />} />
-									<Route path={PublicRoutes.LOGIN} element={<Login />} />
-									<Route path={PublicRoutes.REGISTER} element={<Register />} />
-									<Route
-										path={PublicRoutes.RECOVERY}
-										element={<RecoveryPassword />}
-									/>
-									<Route element={<AuthGuard IsPrivate={true} />}>
-										<Route
-											path={`${PrivateRoutes.PRIVATE}/*`}
-											element={<RoutesPrivate />}
-										/>
-									</Route>
-								</RoutesNotFound>
-								<Footer />
-							</BrowserRouter>
-						</SnackbarProvider>
-					</Provider>
-				</Suspense>
-			</ConfigureTheme>
-		</div>
-	);
+  return (
+    <div className="App">
+      <ConfigureTheme>
+        <Suspense fallback={<SpinnerFallback />}>
+          <Provider store={UserStore}>
+            <SnackbarProvider autoHideDuration={3500}>
+              <SnackbarManager />
+              <BrowserRouter>
+                <Header />
+                <RoutesNotFound>
+                  <Route index element={<MainHome />} />
+                  <Route
+                    path={`${PublicRoutes.CALCULATOR}/*`}
+                    element={<RoutesCalculator />}
+                  />
+                  <Route
+                    path={`${PublicRoutes.TOPICS}/*`}
+                    element={<RoutesTopics />}
+                  />
+                  <Route
+                    path={`${PublicRoutes.DISTRIBUTION_TABLES}/*`}
+                    element={<RoutesDistributions />}
+                  />
+                  <Route
+                    path={PublicRoutes.SYMBOLS}
+                    element={<SearchSymbol />}
+                  />
+                  <Route path={PublicRoutes.COMMENTS} element={<Comments />} />
+                  <Route path={PublicRoutes.LOGIN} element={<Login />} />
+                  <Route path={PublicRoutes.REGISTER} element={<Register />} />
+                  <Route
+                    path={PublicRoutes.RECOVERY}
+                    element={<RecoveryPassword />}
+                  />
+                  <Route element={<AuthGuard IsPrivate={true} />}>
+                    <Route
+                      path={`${PrivateRoutes.PRIVATE}/*`}
+                      element={<RoutesPrivate />}
+                    />
+                  </Route>
+                </RoutesNotFound>
+                <Footer />
+              </BrowserRouter>
+            </SnackbarProvider>
+          </Provider>
+        </Suspense>
+      </ConfigureTheme>
+    </div>
+  );
 }
 
 export default App;

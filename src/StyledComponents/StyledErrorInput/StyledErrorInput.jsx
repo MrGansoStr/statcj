@@ -8,35 +8,35 @@ import { AlertTitle, Typography } from "@mui/material";
 import { DefaultMessageError } from "../../models/GenericMessageError";
 
 function StyledErrorInput({ show, HideError, Message = DefaultMessageError }) {
-	return (
-		<Box
-			component="div"
-			className="d-flex align-items-center justify-content-center"
-		>
-			<Collapse in={show}>
-				<Alert
-					className="p-3"
-					severity="error"
-					action={
-						<IconButton
-							aria-label="close"
-							color="inherit"
-							size="small"
-							onClick={HideError}
-						>
-							<CloseIcon fontSize="inherit" />
-						</IconButton>
-					}
-					sx={{ mb: 2 }}
-				>
-					<AlertTitle>Error</AlertTitle>
-					<Typography className="fw-bold" variant="inherit">
-						{Message}
-					</Typography>
-				</Alert>
-			</Collapse>
-		</Box>
-	);
+  return (
+    <Box
+      component="div"
+      className="d-flex align-items-center justify-content-center"
+    >
+      <Collapse in={show}>
+        <Alert
+          className="p-3"
+          severity="error"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={HideError}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2 }}
+        >
+          <AlertTitle>Error</AlertTitle>
+          <Typography className="fw-bold" variant="inherit">
+            {Message}
+          </Typography>
+        </Alert>
+      </Collapse>
+    </Box>
+  );
 }
 
 export default StyledErrorInput;

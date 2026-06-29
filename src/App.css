@@ -1,29 +1,29 @@
 *::-webkit-scrollbar {
-	display: block;
-	width: 0.4rem;
-	height: 0.4rem;
+  display: block;
+  width: 0.4rem;
+  height: 0.4rem;
 }
 *::-webkit-scrollbar-thumb:vertical {
-	background: #a7a6a6;
-	border-radius: 0.4rem;
-	margin: 1rem solid black;
-	border: 1rem solid #797979;
+  background: #a7a6a6;
+  border-radius: 0.4rem;
+  margin: 1rem solid black;
+  border: 1rem solid #797979;
 }
 *::-webkit-scrollbar-thumb:horizontal {
-	background: #a7a6a6;
-	border-radius: 0.4rem;
-	margin: 1rem solid black;
-	border: 1rem solid #797979;
+  background: #a7a6a6;
+  border-radius: 0.4rem;
+  margin: 1rem solid black;
+  border: 1rem solid #797979;
 }
 
 /* TABLE Z */
 .oneform {
-	overflow: scroll !important;
+  overflow: scroll !important;
 }
 
 .static-header-table {
-	position: -webkit-sticky;
-	position: sticky;
-	z-index: 6;
-	top: -1px;
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 6;
+  top: -1px;
 }

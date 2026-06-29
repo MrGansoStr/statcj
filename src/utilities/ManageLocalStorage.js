@@ -1,18 +1,18 @@
 export const InsertLocalStorageValue = (key, value) => {
-	localStorage.setItem(key, JSON.stringify(value));
-	return;
+  localStorage.setItem(key, JSON.stringify(value));
+  return;
 };
 
 export const InsertLocalStorageValueNormal = (key, value) => {
-	localStorage.setItem(key, value);
-	return;
+  localStorage.setItem(key, value);
+  return;
 };
 
 export const ClearLocalStorageValue = (key) => {
-	localStorage.removeItem(key);
-	return;
+  localStorage.removeItem(key);
+  return;
 };
 
 export const GetLocalStorage = (key) => {
-	return localStorage.getItem(key);
+  return localStorage.getItem(key);
 };

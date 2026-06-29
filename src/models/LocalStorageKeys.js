@@ -3,7 +3,7 @@
  */
 
 export const LSKeys = {
-	TOKEN: "AccessToken",
-	USER: "user",
-	TOKENRECOVERY: "tokenrecovery",
+  TOKEN: "AccessToken",
+  USER: "user",
+  TOKENRECOVERY: "tokenrecovery",
 };

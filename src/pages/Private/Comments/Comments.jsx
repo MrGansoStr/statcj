@@ -1,4 +1,4 @@
 function Comments() {
-	return <div>Comments</div>;
+  return <div>Comments</div>;
 }
 export default Comments;

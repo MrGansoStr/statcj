@@ -5,12 +5,12 @@ import LoggedGuard from "../guards/LoggedGuard";
 const AccountInfo = lazy(() => import("../pages/Private/Account/AccountInfo"));
 
 function RoutesPrivate() {
-	return (
-		<RoutesNotFound>
-			<Route element={<LoggedGuard isLogged={true} />}>
-				<Route index element={<AccountInfo />} />
-			</Route>
-		</RoutesNotFound>
-	);
+  return (
+    <RoutesNotFound>
+      <Route element={<LoggedGuard isLogged={true} />}>
+        <Route index element={<AccountInfo />} />
+      </Route>
+    </RoutesNotFound>
+  );
 }
 export default RoutesPrivate;

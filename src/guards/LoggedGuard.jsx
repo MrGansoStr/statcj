@@ -6,8 +6,8 @@ const PrivateFragment = <Navigate replace to={`/${PrivateRoutes.PRIVATE}`} />;
 const PublicFragment = <Outlet />;
 
 const LoggedGuard = (isLogged) => {
-	const userState = useSelector((store) => store.user);
+  const userState = useSelector((store) => store.user);
 
-	return isLogged ? <Outlet /> : <Navigate to="/login" />;
+  return isLogged ? <Outlet /> : <Navigate to="/login" />;
 };
 export default LoggedGuard;
