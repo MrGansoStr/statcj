@@ -1,12 +1,12 @@
 import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-function NotFoundPage() {
+
+export default function NotFoundPage() {
   const navigate = useNavigate();
-  let styledNotFound = {
+  const styledNotFound = {
     backgroundColor: "#ccc",
     height: "1224px",
     backgroundImage: `url(/images/notFoundPageNew.jpg)`,
-    //http://localhost:port/notFoundPageNew.jpg
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
   };
@@ -45,4 +45,3 @@ function NotFoundPage() {
     </div>
   );
 }
-export default NotFoundPage;
