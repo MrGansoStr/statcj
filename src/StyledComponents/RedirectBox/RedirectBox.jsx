@@ -1,10 +1,15 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import Paper from "@mui/material/Paper";
 
-function RedirectBox({ _height, _title, _types, _info, _route }) {
-  const theme = useTheme();
+export default function RedirectBox({
+  _height,
+  _title,
+  _types,
+  _info,
+  _route,
+}) {
   const style = {
     height: _height,
   };
@@ -31,4 +36,3 @@ function RedirectBox({ _height, _title, _types, _info, _route }) {
     </Box>
   );
 }
-export default RedirectBox;
