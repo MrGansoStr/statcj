@@ -65,7 +65,7 @@ const UseRegister = () => {
 
   const RegisterUser = async (e) => {
     e.preventDefault();
-    if (password != samepassword) {
+    if (password !== samepassword) {
       setShowError(true);
       return;
     }
