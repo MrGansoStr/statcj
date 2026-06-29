@@ -1,4 +1,3 @@
-
 export const ThereErrors = (line, type = "alpha") => {
   if (type === "alpha") {
     let isValid = line.match(/\d+?/g);
@@ -7,18 +6,15 @@ export const ThereErrors = (line, type = "alpha") => {
     }
     if (isValid === null) {
       return true;
+    } else {
+      return false;
     }
-    else {
+  } else if (type === "percentil") {
+    if (line > 100 || line < 0) {
+      return true;
+    } else {
       return false;
     }
   }
-  else if(type === "percentil") {
-    console.log("percentil")
-    if(line > 100 || line < 0) {
-      return true
-    }
-    else {
-      return false;
-    }
-  }
-}
+};
+

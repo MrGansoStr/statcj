@@ -1,9 +1,17 @@
-import { useState } from 'react';
-import { AnswerCommentAPI, DeleteCommentAPI, EditCommentAPI, MakeCommentAPI } from '../services/private.service';
-import { useSelector } from 'react-redux';
-import SubmitData from './../utilities/SubmitData';
-import { DefaultCommentModel } from '../models/CommentsModel';
-import { DefaultEmptyComment, DefaultNotLoggedError } from '../models/GenericMessageError';
+import { useState } from "react";
+import {
+  AnswerCommentAPI,
+  DeleteCommentAPI,
+  EditCommentAPI,
+  MakeCommentAPI,
+} from "../services/private.service";
+import { useSelector } from "react-redux";
+import SubmitData from "./../utilities/SubmitData";
+import { DefaultCommentModel } from "../models/CommentsModel";
+import {
+  DefaultEmptyComment,
+  DefaultNotLoggedError,
+} from "../models/GenericMessageError";
 
 const UseComment = () => {
   const [comment, setComment] = useState("");
@@ -14,27 +22,27 @@ const UseComment = () => {
   const [msgError, setMsgError] = useState(null);
   const [ModalDelete, setModalDelete] = useState(false);
 
-  const userState = useSelector(store => store.user);
+  const userState = useSelector((store) => store.user);
 
   const ChangeComment = (e) => {
     e.preventDefault();
     setComment(e.target.value);
-  }
+  };
 
   const ChangeActionComment = (e) => {
     e.preventDefault();
     setActionComment(e.target.value);
-  }
+  };
 
   const HideError = (e) => {
     e.preventDefault();
     setShowError(false);
-  }
+  };
 
   const HideShowAction = (e) => {
     e.preventDefault();
     setShowAction(false);
-  }
+  };
 
   const ChangeShowAction = (e, type) => {
     e.preventDefault();
@@ -49,18 +57,16 @@ const UseComment = () => {
       return;
     }
     return;
-  }
+  };
 
   const MakeComment = async (e) => {
     e.preventDefault();
     if (comment.length === 0) {
       setMsgError(DefaultEmptyComment);
       setShowError(true);
-      console.log("Hay un Error en el comentario");
       return;
-    }
-    else {
-      if(Object.keys(userState).length <= 1) {
+    } else {
+      if (Object.keys(userState).length <= 1) {
         setMsgError(DefaultNotLoggedError);
         setShowError(true);
         return;
@@ -70,97 +76,107 @@ const UseComment = () => {
         CommentModel.userId = userState?.idUser;
         CommentModel.comment = comment;
         let result = await SubmitData(MakeCommentAPI(CommentModel));
-        console.log(result);
         return;
       } catch (error) {
-        console.error(error);
         return;
       }
     }
-  }
+  };
 
   const MakeAnswer = async (e, infoCommentToAnswer, comment) => {
     e.preventDefault();
     if (comment.length === 0 || actionComment.length === 0) {
       setMsgError(DefaultEmptyComment);
       setShowError(true);
-      console.log("La respuesta está vacia")
       return;
-    }
-    else{
-      if(Object.keys(userState).length <= 1) {
+    } else {
+      if (Object.keys(userState).length <= 1) {
         setMsgError(DefaultNotLoggedError);
         setShowError(true);
         return;
       }
-      console.log(infoCommentToAnswer?.idComment);
-      console.log("Make Answer", actionComment);
       try {
-        let CommentModel = {idToAnswer: infoCommentToAnswer?.idComment, ...DefaultCommentModel};
+        let CommentModel = {
+          idToAnswer: infoCommentToAnswer?.idComment,
+          ...DefaultCommentModel,
+        };
         CommentModel.userId = userState?.idUser;
         CommentModel.comment = actionComment;
-        //console.log(CommentModel);
         let result = await SubmitData(AnswerCommentAPI(CommentModel));
-        if(result){
+        if (result) {
           window.location.reload();
         }
         return;
       } catch (error) {
-        console.error(error);
         return;
       }
     }
-  }
+  };
 
   const EditComment = async (e, infoCommentToEdit, comment) => {
     e.preventDefault();
-    console.log(comment);
     if (comment.length === 0 || actionComment.length === 0) {
       setShowError(true);
-      console.log("El edit no debe estar vacio");
       return;
-    }
-    else{
-      //console.log(infoCommentToEdit?.idComment);
-      //console.log("Edit comment", actionComment);
+    } else {
       try {
-        let result = await SubmitData(EditCommentAPI({
-          idComment: infoCommentToEdit.idComment,
-          newComment: actionComment
-        }));
-        if(result){
+        let result = await SubmitData(
+          EditCommentAPI({
+            idComment: infoCommentToEdit.idComment,
+            newComment: actionComment,
+          }),
+        );
+        if (result) {
           window.location.reload();
         }
       } catch (error) {
-        console.error(error);
-        return; 
+        return;
       }
     }
-  }
+  };
 
   const OpenModalDelete = (e) => {
     e.preventDefault();
     setModalDelete(true);
-  }
+  };
 
   const HideModalDelete = () => {
     setModalDelete(false);
-  }
+  };
   const DeleteComment = async (e, InfoComment) => {
     e.preventDefault();
     try {
-      let result = await SubmitData(DeleteCommentAPI({
-        idComment: InfoComment.idComment,
-        userId: userState.idUser
-      }));
+      let result = await SubmitData(
+        DeleteCommentAPI({
+          idComment: InfoComment.idComment,
+          userId: userState.idUser,
+        }),
+      );
       setModalDelete(false);
-      console.log(result);
       return;
     } catch (error) {
-      console.error(error);
       return;
     }
-  }
-  return { showError, typeAction, showAction, actionComment, msgError, ModalDelete, HideModalDelete, OpenModalDelete, DeleteComment, ChangeActionComment, ChangeShowAction, HideShowAction, EditComment, MakeAnswer, ChangeComment, MakeComment, HideError };
-}
+  };
+  return {
+    showError,
+    typeAction,
+    showAction,
+    actionComment,
+    msgError,
+    ModalDelete,
+    HideModalDelete,
+    OpenModalDelete,
+    DeleteComment,
+    ChangeActionComment,
+    ChangeShowAction,
+    HideShowAction,
+    EditComment,
+    MakeAnswer,
+    ChangeComment,
+    MakeComment,
+    HideError,
+  };
+};
 export default UseComment;
+
