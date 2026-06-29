@@ -2,20 +2,23 @@ import { CalculateMedia, CalculateMediaGrouped } from "./CalculationsMct";
 import { ProcessData, redondeo } from "./CalculationsFrecuencyTables";
 
 export const CalculateVariance = (Data, _muestral = true) => {
-  let media = CalculateMedia(Data);
+  const media = CalculateMedia(Data);
   let sum = 0;
 
   Data.forEach((element) => {
     sum += Math.pow(element - media, 2);
   });
 
-  let varianza = redondeo(sum / (_muestral ? Data.length - 1 : Data.length), 4);
+  const varianza = redondeo(
+    sum / (_muestral ? Data.length - 1 : Data.length),
+    4,
+  );
   return varianza;
 };
 
 export const CalculateVarianceGrouped = (Data, _muestral = false) => {
-  let MediaAgrupada = CalculateMediaGrouped(Data);
-  let DataTable = ProcessData(Data, true);
+  const MediaAgrupada = CalculateMediaGrouped(Data);
+  const DataTable = ProcessData(Data, true);
   let sumatoria = 0;
   let sumaVeces = 0;
 
@@ -25,7 +28,7 @@ export const CalculateVarianceGrouped = (Data, _muestral = false) => {
     sumaVeces += element.veces;
   });
 
-  let VarianzaAgrupada = sumatoria / (_muestral ? sumaVeces - 1 : sumaVeces);
+  const VarianzaAgrupada = sumatoria / (_muestral ? sumaVeces - 1 : sumaVeces);
   return redondeo(VarianzaAgrupada, 4);
 };
 
