@@ -30,8 +30,8 @@ export const CalculateVarianceGrouped = (Data, _muestral = false) => {
 };
 
 export const CalculateStandarError = (Variance) => {
-  let Error = Math.sqrt(Variance);
-  return redondeo(Error, 4);
+  const standardError = Math.sqrt(Variance);
+  return redondeo(standardError, 4);
 };
 
 export const CalculateVarianceAndError = (
@@ -42,6 +42,6 @@ export const CalculateVarianceAndError = (
   const Varianza = _grouped
     ? CalculateVarianceGrouped(Data, _muestral)
     : CalculateVariance(Data, _muestral);
-  const Error = CalculateStandarError(Varianza);
-  return { varianza: Varianza, error: Error };
+  const standardError = CalculateStandarError(Varianza);
+  return { varianza: Varianza, error: standardError };
 };
