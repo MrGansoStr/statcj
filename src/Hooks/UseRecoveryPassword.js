@@ -39,7 +39,7 @@ const UseRecoveryPassword = () => {
     e.preventDefault();
     if (ValidateEmail(Email)) {
       try {
-        let result = await SubmitData(FindEmailAPI({ email: Email }));
+        const result = await SubmitData(FindEmailAPI({ email: Email }));
         if (result) {
           InsertLocalStorageValueNormal(
             LSKeys.TOKENRECOVERY,
