@@ -1,5 +1,3 @@
-import { MathComponent } from "mathjax-react";
-
 export const TablesFrecuencyDescription = {
   title: "Tablas de Frecuencias",
   types: "Para Datos Agrupados y No agrupados",
