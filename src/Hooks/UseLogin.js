@@ -28,7 +28,7 @@ const UseLogin = () => {
   const SubmitForm = async (e) => {
     e.preventDefault();
     try {
-      let { data } = await SubmitData(
+      const { data } = await SubmitData(
         LoginAPI({ username: username, password: password }),
       );
       dispatch(createUser(data?.InfoUser));
