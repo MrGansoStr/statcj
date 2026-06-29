@@ -22,7 +22,6 @@
 }
 
 .static-header-table {
-  position: -webkit-sticky;
   position: sticky;
   z-index: 6;
   top: -1px;
