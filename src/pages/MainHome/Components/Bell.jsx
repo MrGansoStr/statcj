@@ -1,7 +1,4 @@
-
 function Bell() {
-  return (
-    <div>Bell</div>
-  );
+	return <div>Bell</div>;
 }
 export default Bell;

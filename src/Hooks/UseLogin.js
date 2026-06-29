@@ -10,37 +10,36 @@ import { InsertLocalStorageValueNormal } from "../utilities/ManageLocalStorage";
 import { LSKeys } from "../models/LocalStorageKeys";
 
 const UseLogin = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
-  const SetUser = (e) => {
-    e.preventDefault();
-    setUsername(e.target.value);
-  };
+	const SetUser = (e) => {
+		e.preventDefault();
+		setUsername(e.target.value);
+	};
 
-  const SetPass = (e) => {
-    e.preventDefault();
-    setPassword(e.target.value);
-  };
+	const SetPass = (e) => {
+		e.preventDefault();
+		setPassword(e.target.value);
+	};
 
-  const SubmitForm = async (e) => {
-    e.preventDefault();
-    try {
-      let { data } = await SubmitData(
-        LoginAPI({ username: username, password: password }),
-      );
-      dispatch(createUser(data?.InfoUser));
-      InsertLocalStorageValueNormal(LSKeys.TOKEN, data.AccessToken);
-      navigate(`/${PrivateRoutes.PRIVATE}`);
-      window.location.reload();
-    } catch (error) {
-      throw error;
-    }
-  };
+	const SubmitForm = async (e) => {
+		e.preventDefault();
+		try {
+			let { data } = await SubmitData(
+				LoginAPI({ username: username, password: password }),
+			);
+			dispatch(createUser(data?.InfoUser));
+			InsertLocalStorageValueNormal(LSKeys.TOKEN, data.AccessToken);
+			navigate(`/${PrivateRoutes.PRIVATE}`);
+			window.location.reload();
+		} catch (error) {
+			throw error;
+		}
+	};
 
-  return { username, password, SetUser, SetPass, SubmitForm };
+	return { username, password, SetUser, SetPass, SubmitForm };
 };
 export default UseLogin;
-

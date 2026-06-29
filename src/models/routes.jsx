@@ -6,26 +6,26 @@ MCT Medidas de Tendencia Central
 
 */
 export const PublicRoutes = {
-  HOME: "",
-  CALCULATOR: "calculator",
-  SAMPLING: "sampling",
-  PROBABILITIES: "probabilities",
-  DISTRIBUTION_TABLES: "distributions",
-  SEARCH_SYMBOL: "symbols",
-  TOPICS: "topics",
-  SYMBOLS: "symbols",
-  LOGIN: "login",
-  REGISTER: "register",
-  RECOVERY: "recoverypassword",
-  COMMENTS: "comments"
-}
+	HOME: "",
+	CALCULATOR: "calculator",
+	SAMPLING: "sampling",
+	PROBABILITIES: "probabilities",
+	DISTRIBUTION_TABLES: "distributions",
+	SEARCH_SYMBOL: "symbols",
+	TOPICS: "topics",
+	SYMBOLS: "symbols",
+	LOGIN: "login",
+	REGISTER: "register",
+	RECOVERY: "recoverypassword",
+	COMMENTS: "comments",
+};
 
 export const PrivateRoutes = {
-  PRIVATE: "private",
-  HOME: "",
-  PROFILE: "profile",
-  COMMENTS: "comments"
-}
+	PRIVATE: "private",
+	HOME: "",
+	PROFILE: "profile",
+	COMMENTS: "comments",
+};
 
 /*
 
@@ -36,18 +36,18 @@ DIST Distribuciones
 */
 
 export const DistTablesRoutes = {
-  HOME: "",
-  DISTZ: "valuez",
-  DISTF: "valuef"
-}
+	HOME: "",
+	DISTZ: "valuez",
+	DISTF: "valuef",
+};
 
 export const CalculatorRoutes = {
-  HOME: "",
-  FRECUENCY_TABLES: "tables",
-  MCT: "mct",
-  VARIANCE: "varianceanderror",
-  PERCENTILES: "percentile"
-}
+	HOME: "",
+	FRECUENCY_TABLES: "tables",
+	MCT: "mct",
+	VARIANCE: "varianceanderror",
+	PERCENTILES: "percentile",
+};
 
 /*
 @Abbreviations
@@ -61,25 +61,25 @@ MD Double Sampling / Muestreo Doble
 */
 
 export const SamplingRoutes = {
-  HOME: "",
-  MAS: "mas",
-  MAE: "mae",
-  MPC: "mpc",
-  MS: "ms",
-  MD: "md"
-}
+	HOME: "",
+	MAS: "mas",
+	MAE: "mae",
+	MPC: "mpc",
+	MS: "ms",
+	MD: "md",
+};
 
 export const ProbabilitiesRoutes = {
-  HOME: "",
-  PERMUTATIONS: "permutations",
-  COMBINATIONS: "combinations"
-}
+	HOME: "",
+	PERMUTATIONS: "permutations",
+	COMBINATIONS: "combinations",
+};
 
 export const TopicsRoutes = {
-  HOME: "",
-  VARIANCE: "variance",
-  ERROR: "error",
-  MEDIA: "media",
-  MEDIANA: "mediana",
-  MODA: "moda",
-}
+	HOME: "",
+	VARIANCE: "variance",
+	ERROR: "error",
+	MEDIA: "media",
+	MEDIANA: "mediana",
+	MODA: "moda",
+};

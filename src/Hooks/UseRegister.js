@@ -7,120 +7,119 @@ import SubmitData from "./../utilities/SubmitData";
 import { PublicRoutes } from "./../models/routes";
 
 const UseRegister = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [samepassword, setSamePassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [names, setNames] = useState("");
-  const [lastNames, setLastNames] = useState("");
-  const [acceptTerms, setAcceptTerms] = useState(false);
-  const [showError, setShowError] = useState(false);
-  const [gender, setGender] = useState(GenderModel.default);
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
+	const [samepassword, setSamePassword] = useState("");
+	const [email, setEmail] = useState("");
+	const [names, setNames] = useState("");
+	const [lastNames, setLastNames] = useState("");
+	const [acceptTerms, setAcceptTerms] = useState(false);
+	const [showError, setShowError] = useState(false);
+	const [gender, setGender] = useState(GenderModel.default);
 
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  const ChangeUsername = (e) => {
-    e.preventDefault();
-    setUsername(e.target.value);
-  };
+	const ChangeUsername = (e) => {
+		e.preventDefault();
+		setUsername(e.target.value);
+	};
 
-  const ChangePassword = (e) => {
-    e.preventDefault();
-    setPassword(e.target.value);
-  };
-  const ChangeSamePassword = (e) => {
-    e.preventDefault();
-    setSamePassword(e.target.value);
-  };
+	const ChangePassword = (e) => {
+		e.preventDefault();
+		setPassword(e.target.value);
+	};
+	const ChangeSamePassword = (e) => {
+		e.preventDefault();
+		setSamePassword(e.target.value);
+	};
 
-  const ChangeEmail = (e) => {
-    e.preventDefault();
-    setEmail(e.target.value);
-  };
+	const ChangeEmail = (e) => {
+		e.preventDefault();
+		setEmail(e.target.value);
+	};
 
-  const ChangeNames = (e) => {
-    e.preventDefault();
-    setNames(e.target.value);
-  };
+	const ChangeNames = (e) => {
+		e.preventDefault();
+		setNames(e.target.value);
+	};
 
-  const ChangeLastNames = (e) => {
-    e.preventDefault();
-    setLastNames(e.target.value);
-  };
+	const ChangeLastNames = (e) => {
+		e.preventDefault();
+		setLastNames(e.target.value);
+	};
 
-  const ChangeAcceptTerms = (e) => {
-    e.preventDefault();
-    setAcceptTerms(!acceptTerms);
-  };
+	const ChangeAcceptTerms = (e) => {
+		e.preventDefault();
+		setAcceptTerms(!acceptTerms);
+	};
 
-  const ChangeGender = (e) => {
-    e.preventDefault();
-    setGender(e.target.value);
-  };
+	const ChangeGender = (e) => {
+		e.preventDefault();
+		setGender(e.target.value);
+	};
 
-  const HideError = (e) => {
-    e.preventDefault();
-    setShowError(false);
-  };
+	const HideError = (e) => {
+		e.preventDefault();
+		setShowError(false);
+	};
 
-  const RegisterUser = async (e) => {
-    e.preventDefault();
-    if (password != samepassword) {
-      setShowError(true);
-      return;
-    }
-    if (!ValidateEmail(email)) {
-      setShowError(true);
-      return;
-    }
-    if (gender === 0) {
-      setShowError(true);
-      return;
-    }
-    if (acceptTerms === false) {
-      setShowError(true);
-      return;
-    } else {
-      try {
-        // idUser: 0 in the database is automatic modified with an autincrement number
-        await SubmitData(
-          RegisterAPI({
-            idUser: 0,
-            username: username,
-            password: password,
-            email: email,
-            name: names,
-            lastName: lastNames,
-            gender: gender,
-          }),
-        );
-        navigate(`/${PublicRoutes.LOGIN}`);
-      } catch (error) {
-        return;
-      }
-    }
-  };
+	const RegisterUser = async (e) => {
+		e.preventDefault();
+		if (password != samepassword) {
+			setShowError(true);
+			return;
+		}
+		if (!ValidateEmail(email)) {
+			setShowError(true);
+			return;
+		}
+		if (gender === 0) {
+			setShowError(true);
+			return;
+		}
+		if (acceptTerms === false) {
+			setShowError(true);
+			return;
+		} else {
+			try {
+				// idUser: 0 in the database is automatic modified with an autincrement number
+				await SubmitData(
+					RegisterAPI({
+						idUser: 0,
+						username: username,
+						password: password,
+						email: email,
+						name: names,
+						lastName: lastNames,
+						gender: gender,
+					}),
+				);
+				navigate(`/${PublicRoutes.LOGIN}`);
+			} catch (error) {
+				return;
+			}
+		}
+	};
 
-  return {
-    username,
-    password,
-    email,
-    names,
-    lastNames,
-    acceptTerms,
-    showError,
-    gender,
-    ChangeGender,
-    HideError,
-    ChangeUsername,
-    ChangePassword,
-    ChangeEmail,
-    ChangeNames,
-    ChangeLastNames,
-    RegisterUser,
-    ChangeAcceptTerms,
-    ChangeSamePassword,
-  };
+	return {
+		username,
+		password,
+		email,
+		names,
+		lastNames,
+		acceptTerms,
+		showError,
+		gender,
+		ChangeGender,
+		HideError,
+		ChangeUsername,
+		ChangePassword,
+		ChangeEmail,
+		ChangeNames,
+		ChangeLastNames,
+		RegisterUser,
+		ChangeAcceptTerms,
+		ChangeSamePassword,
+	};
 };
 export default UseRegister;
-
