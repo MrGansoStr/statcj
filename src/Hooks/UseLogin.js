@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { UserModelLogged } from "../models/InitialUser";
-import { createUser, deleteUser } from "../redux/states/user";
+import { createUser } from "../redux/states/user";
 import { useNavigate } from "react-router-dom";
 import { LoginAPI } from "../services/public.service";
 import SubmitData from "../utilities/SubmitData";
