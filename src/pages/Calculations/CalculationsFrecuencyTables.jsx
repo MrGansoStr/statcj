@@ -3,7 +3,7 @@ const compareNumbers = (a, b) => {
 };
 
 export const redondeo = (val, _cifras = 4) => {
-  let cifras = Math.pow(10, _cifras);
+  const cifras = Math.pow(10, _cifras);
   return Math.round((val + Number.EPSILON) * cifras) / cifras;
 };
 
@@ -14,7 +14,7 @@ export const calculateInterval = (n) => {
   if (n > 25) {
     interval = parseInt(Math.sqrt(n)); // K
   } else {
-    let tempInterval = 1 + 3.322 * Math.log10(n);
+    const tempInterval = 1 + 3.322 * Math.log10(n);
     interval = parseInt(tempInterval); // k Sturges
     if (interval % 2 == 0) {
       interval = interval + 1;
@@ -24,9 +24,9 @@ export const calculateInterval = (n) => {
 };
 
 export const calculateAmplitud = (Data) => {
-  let max = Math.max(...Data);
-  let min = Math.min(...Data);
-  let interval = calculateInterval(Data.length);
+  const max = Math.max(...Data);
+  const min = Math.min(...Data);
+  const interval = calculateInterval(Data.length);
   return parseInt((max - min) / interval) + 1;
 };
 
@@ -38,7 +38,7 @@ export const ProcessData = (
   manualC = 0,
 ) => {
   let RawDataGrouped;
-  let DataGrouped = [];
+  const DataGrouped = [];
   let max;
   let min;
   let range;
@@ -56,8 +56,8 @@ export const ProcessData = (
       ? manualK
       : calculateInterval(RawDataGrouped.length);
     amplitude = manualParameters ? manualC : calculateAmplitud(RawDataGrouped); // Amplitud
-    let newRange = interval * amplitude;
-    let CorreccionDeIntevalo = parseInt((newRange - range) / 2);
+    const newRange = interval * amplitude;
+    const CorreccionDeIntevalo = parseInt((newRange - range) / 2);
     min = min - CorreccionDeIntevalo;
     max = max + CorreccionDeIntevalo;
     if (min < 0.0) {
@@ -66,10 +66,10 @@ export const ProcessData = (
     let acumuladorAbsoluta = 0;
     let acumuladorRelativa = 0;
     for (let i = 0; i < interval; i++) {
-      let _veces = RawDataGrouped.filter(
+      const _veces = RawDataGrouped.filter(
         (element) => element >= min && element < min + amplitude,
       ).length;
-      let _relativa = _veces / RawDataGrouped.length;
+      const _relativa = _veces / RawDataGrouped.length;
       acumuladorAbsoluta += _veces;
       acumuladorRelativa += _relativa;
       let obj = {
@@ -91,18 +91,18 @@ export const ProcessData = (
     return DataGrouped;
   } else {
     RawDataGrouped = _inputData;
-    let DataGrouped = [];
-    let temp = new Set(RawDataGrouped);
-    let DataWithouthRep = [...temp];
+    const DataGrouped = [];
+    const temp = new Set(RawDataGrouped);
+    const DataWithouthRep = [...temp];
     DataWithouthRep.sort(compareNumbers);
     let acumuladorAbsoluta = 0;
     let acumuladorRelativa = 0;
 
     for (let i = 0; i < DataWithouthRep.length; i++) {
-      let _veces = RawDataGrouped.filter(
+      const _veces = RawDataGrouped.filter(
         (element) => element == DataWithouthRep[i],
       ).length;
-      let _relativa = _veces / RawDataGrouped.length;
+      const _relativa = _veces / RawDataGrouped.length;
       acumuladorAbsoluta += _veces;
       acumuladorRelativa += _relativa;
       let obj = {

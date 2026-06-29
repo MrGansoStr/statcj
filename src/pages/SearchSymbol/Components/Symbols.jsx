@@ -8,8 +8,8 @@ const gridItem = {
 };
 
 function Symbols() {
-  let ListSymbols = SymbolsDescriptions;
-  let { wordToSearch } = UseContextSymbols();
+  const ListSymbols = SymbolsDescriptions;
+  const { wordToSearch } = UseContextSymbols();
   return (
     <Box component="div" className="p-3 mt-2 ">
       <div className="d-block">

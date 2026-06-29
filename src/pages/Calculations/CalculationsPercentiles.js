@@ -1,7 +1,7 @@
 import { ProcessData, redondeo } from "./CalculationsFrecuencyTables";
 
 const isInteger = (num) => {
-  let newNum = num.toString();
+  const newNum = num.toString();
   if (newNum.includes(".")) {
     return false;
   } else {
@@ -10,7 +10,7 @@ const isInteger = (num) => {
 };
 
 const extractDecimal = (num) => {
-  let tempINT = parseInt(num);
+  const tempINT = parseInt(num);
   return parseFloat(num - tempINT);
 };
 
@@ -45,8 +45,8 @@ const CalculatePercentil = (Data, _k) => {
   if (isInteger(Position)) {
     Percentil = Data[Position];
   } else {
-    let NewPosition = parseInt(Position);
-    let dec = redondeo(extractDecimal(Position), 4);
+    const NewPosition = parseInt(Position);
+    const dec = redondeo(extractDecimal(Position), 4);
     Percentil =
       Data[NewPosition - 1] + (Data[NewPosition] - Data[NewPosition - 1]) * dec;
   }
@@ -59,10 +59,10 @@ const CalculatePercentilGrouped = (Data, _k) => {
   TableData.forEach((element) => {
     theN += element.veces;
   });
-  let ForFindPosition = (_k * theN) / 100;
-  let Position = NearPosition(TableData, ForFindPosition);
-  let LimiteInferior = TableData[Position].minimo;
-  let TamanioIntervalo =
+  const ForFindPosition = (_k * theN) / 100;
+  const Position = NearPosition(TableData, ForFindPosition);
+  const LimiteInferior = TableData[Position].minimo;
+  const TamanioIntervalo =
     TableData[Position].maximo - TableData[Position].minimo;
   const Percentil =
     LimiteInferior +

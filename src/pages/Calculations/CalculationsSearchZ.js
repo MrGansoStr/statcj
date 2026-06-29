@@ -6,10 +6,10 @@ const funcionDensidadZAcumulado = (x) => {
 };
 
 export const CalculateValueZ = (valZ, media = 0, desv = 1) => {
-  let sup = valZ,
+  const sup = valZ,
     inf = -5.0;
   let area = 0.0;
-  let dx = 0.000001;
+  const dx = 0.000001;
   for (let i = inf; i < sup; i += dx) {
     area += dx * funcionDensidadZAcumulado(i);
   }
@@ -17,11 +17,11 @@ export const CalculateValueZ = (valZ, media = 0, desv = 1) => {
 };
 
 export const CalculateAllValuesZ = () => {
-  let ValuesZ = [];
+  const ValuesZ = [];
   let counteri = 0;
   for (let i = -3; i <= 3; i += 0.1) {
     let counterj = 0;
-    let tempArray = [];
+    const tempArray = [];
     for (let j = 0; j <= 0.09; j += 0.01) {
       tempArray.push(CalculateValueZ(i + j));
       counterj++;
@@ -41,11 +41,11 @@ export const ReadValuesZ = async () => {
 };
 
 const ProcessTextValues = async (content) => {
-  let ValuesOfZ = [];
-  let lines = content.split(/\n/);
+  const ValuesOfZ = [];
+  const lines = content.split(/\n/);
   lines.forEach((line) => {
-    let arrValues = ProcessInputTextDecimals(line);
-    let tempobj = {
+    const arrValues = ProcessInputTextDecimals(line);
+    const tempobj = {
       valueZ: arrValues[0],
       values: arrValues.filter((element, index) => index != 0),
     };

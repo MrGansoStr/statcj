@@ -1,12 +1,12 @@
 export const ProcessInput = (rawData) => {
-  let newRawData = rawData.replace(/[^\.\d+?]/g, " ");
-  let arrFinalData = newRawData.split(" ").map(Number);
+  const newRawData = rawData.replace(/[^\.\d+?]/g, " ");
+  const arrFinalData = newRawData.split(" ").map(Number);
   return arrFinalData;
 };
 
 export const ProcessInputTextDecimals = (LineString) => {
-  let newLineString = LineString.replace(/^\d*(\.\d{1})?\d{10,30}$/, ",");
-  let FinalLine = newLineString.split(",").map(Number);
-  let FinalLine1 = LineString.split(",").map(Number);
+  const newLineString = LineString.replace(/^\d*(\.\d{1})?\d{10,30}$/, ",");
+  const FinalLine = newLineString.split(",").map(Number);
+  const FinalLine1 = LineString.split(",").map(Number);
   return FinalLine1;
 };

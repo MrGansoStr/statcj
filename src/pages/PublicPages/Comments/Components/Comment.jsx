@@ -13,10 +13,10 @@ import {
 } from "./../../../SearchSymbol/Components/ExtraInfoBoxSymbol";
 
 function Comment({ InfoComment, isLogged = false, idUserLogged }) {
-  let date = new Date(
+  const date = new Date(
     Date.parse(InfoComment?.timeComment),
   ).toLocaleDateString();
-  let hours = new Date(Date.parse(InfoComment?.timeComment)).toLocaleTimeString(
+  const hours = new Date(Date.parse(InfoComment?.timeComment)).toLocaleTimeString(
     [],
     { hour: "2-digit", minute: "2-digit" },
   );

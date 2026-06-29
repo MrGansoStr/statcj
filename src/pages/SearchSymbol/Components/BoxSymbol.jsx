@@ -15,10 +15,10 @@ function BoxSymbol({
   _Description = "c",
   _idSymbol = 0,
 }) {
-  let { setOpenInfo, setIdSymbol, setInfoSymbol } = UseContextSymbols();
-  let ListSymbols = SymbolsDescriptions;
+  const { setOpenInfo, setIdSymbol, setInfoSymbol } = UseContextSymbols();
+  const ListSymbols = SymbolsDescriptions;
   const SSymbol = (symbolid) => {
-    let InfoSymbol = ListSymbols.find((element) => {
+    const InfoSymbol = ListSymbols.find((element) => {
       return element?.idSymbol === symbolid;
     });
     return InfoSymbol;

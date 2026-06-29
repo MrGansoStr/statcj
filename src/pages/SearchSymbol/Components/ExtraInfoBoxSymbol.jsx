@@ -62,7 +62,7 @@ const InfoBlank = {
 };
 
 export default function CustomizedDialogs() {
-  let { openInfo, setOpenInfo, idSymbol, InfoSymbol } = UseContextSymbols();
+  const { openInfo, setOpenInfo, idSymbol, InfoSymbol } = UseContextSymbols();
   const [TheInfoSymbol, setTheInfoSymbol] = React.useState(InfoBlank);
 
   useEffect(() => {

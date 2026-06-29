@@ -18,7 +18,7 @@ export const userSlice = createSlice({
       return action.payload;
     },
     updateUser: (state, action) => {
-      let result = { ...state, ...action.payload };
+      const result = { ...state, ...action.payload };
       InsertLocalStorageValue(LSKeys.USER, result);
       return result;
     },

@@ -15,7 +15,7 @@ import { AllTopics } from "../../../models/Topics";
 function SearchTopic() {
   const [topic, setTopic] = useState("");
   const navigate = useNavigate();
-  let ListTopics = AllTopics;
+  const ListTopics = AllTopics;
 
   const handleChangeTopic = (e) => {
     setTopic(e.target.value);

@@ -2,7 +2,7 @@ import { Box, TextField } from "@mui/material";
 import { UseContextSymbols } from "../ContextSearchSymbols";
 
 function SearchEngine() {
-  let { wordToSearch, setWordToSearch } = UseContextSymbols();
+  const { wordToSearch, setWordToSearch } = UseContextSymbols();
 
   const handleChangeNameSymbol = (e) => {
     setWordToSearch(e.target.value);
