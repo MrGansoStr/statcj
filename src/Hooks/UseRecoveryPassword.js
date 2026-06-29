@@ -50,7 +50,7 @@ const UseRecoveryPassword = () => {
           return;
         }
         return;
-      } catch (error) {
+      } catch {
         return;
       }
     } else {
